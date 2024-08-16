@@ -19,17 +19,6 @@ public class Main {
             }
         }
 
-//        idades.add(24);
-//        idades.add(17);
-//        idades.add(16);
-//        idades.add(19);
-//        idades.add(21);
-//        idades.add(18);
-//        idades.add(20);
-//        idades.add(23);
-//        idades.add(25);
-//        idades.add(22);
-
         do {
             System.out.println("--------------------------------");
             System.out.println("Lista de idades: " + idades);
