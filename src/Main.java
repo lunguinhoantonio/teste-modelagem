@@ -5,7 +5,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         boolean go = true;
-        byte continueCase4 = 1;
         String continueCase2 = "";
         String continueCase3;
         String respCase5;
