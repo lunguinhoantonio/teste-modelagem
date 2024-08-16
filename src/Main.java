@@ -50,7 +50,7 @@ public class Main {
                         }
                         System.out.print("Continuar adicionando? [S/N] ");
                         continueCase2 = scan.next().toUpperCase();
-                        System.out.println("Idades adicionadas!");
+                        System.out.println("Idade adicionada!");
                         System.out.println("-----------------------------------------------------");
                     } while (continueCase2.equals("S"));
                     break;
