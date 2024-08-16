@@ -55,10 +55,10 @@ public class Main {
                     } while (continueCase2.equals("S"));
                     break;
                 case 3:
-                    System.out.println("1. Remover todas abaixo de 18");
-                    System.out.println("2. Remover todas acima ou iguais a 18 e abaixo de 60");
-                    System.out.println("3. Remover todas acima ou iguais a 60");
-                    System.out.println("4. Personalizar remoções");
+                    System.out.println("1. Remover menores de idade");
+                    System.out.println("2. Remover adultos");
+                    System.out.println("3. Remover idosos");
+                    System.out.println("4. Personalizar remoção");
                     System.out.println("5. Voltar");
                     System.out.print("Resposta: ");
                     byte choiceCase3 = scan.nextByte();
