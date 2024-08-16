@@ -19,7 +19,7 @@ public class Main {
         }
 
         do {
-            System.out.println("--------------------------------");
+            System.out.println("-----------------------------------------------------");
             System.out.println("Lista de idades: " + idades);
             System.out.println("1. Consultar quantidade de idades");
             System.out.println("2. Adicionar idade");
@@ -29,6 +29,7 @@ public class Main {
             System.out.println("6. Fechar programa");
             System.out.print("Resposta: ");
             int choice = scan.nextInt();
+            System.out.println("-----------------------------------------------------");
 
             switch (choice) {
                 case 1:
@@ -49,18 +50,51 @@ public class Main {
                         }
                         System.out.print("Continuar adicionando? [S/N] ");
                         continueCase2 = scan.next().toUpperCase();
+                        System.out.println("-----------------------------------------------------");
                     } while (continueCase2.equals("S"));
                     break;
                 case 3:
-                    do {
-                        System.out.print("Remover idade: ");
-                        rmvAge = scan.nextInt();
-                        boolean removed = idades.remove(Integer.valueOf(rmvAge));
-                        String msgCase3 = (removed) ? "Idade removida!" : "Idade não encontrada!";
-                        System.out.println(msgCase3);
-                        System.out.print("Continuar removendo? [S/N] ");
-                        continueCase3 = scan.next().toUpperCase();
-                    } while (continueCase3.equals("S"));
+                    System.out.println("1. Remover todas abaixo de 18");
+                    System.out.println("2. Remover todas acima ou iguais a 18 e abaixo de 60");
+                    System.out.println("3. Remover todas acima ou iguais a 60");
+                    System.out.println("4. Personalizar remoções");
+                    System.out.println("5. Voltar");
+                    System.out.print("Resposta: ");
+                    byte choiceCase3 = scan.nextByte();
+                    System.out.println("-----------------------------------------------------");
+                    switch (choiceCase3) {
+                        case 1:
+                            boolean removedOption1 = idades.removeIf(num -> num < 18);
+                            String msgCase3Option1 = (removedOption1) ? "Idades removidas!" : "Idades não encontradas!";
+                            System.out.println(msgCase3Option1);
+                            break;
+                        case 2:
+                            boolean removedOption2 = idades.removeIf(num -> num >= 18 && num < 60);
+                            String msgCase3Option2 = (removedOption2) ? "Idades removidas!" : "Idades não encontradas!";
+                            System.out.println(msgCase3Option2);
+                            break;
+                        case 3:
+                            boolean removedOption3 = idades.removeIf(num -> num >= 60);
+                            String msgCase3Option3 = (removedOption3) ? "Idades removidas!" : "Idades não encontradas!";
+                            System.out.println(msgCase3Option3);
+                            break;
+                        case 4:
+                            do {
+                                System.out.print("Remover idade: ");
+                                rmvAge = scan.nextInt();
+                                boolean removedOption4 = idades.remove(Integer.valueOf(rmvAge));
+                                String msgCase3Option4 = (removedOption4) ? "Idade removida!" : "Idade não encontrada!";
+                                System.out.println(msgCase3Option4);
+                                System.out.print("Continuar removendo? [S/N] ");
+                                continueCase3 = scan.next().toUpperCase();
+                                System.out.println("-----------------------------------------------------");
+                            } while (continueCase3.equals("S"));
+                            break;
+                        case 5:
+                            break;
+                        default:
+                            System.out.println("Selecione uma opção válida!");
+                    }
                     break;
                 case 4:
                     boolean goCase4 = true;
@@ -68,24 +102,33 @@ public class Main {
                         System.out.println("Ordenar em ordem: ");
                         System.out.println("1. Crescente");
                         System.out.println("2. Decrescente");
+                        System.out.println("3. Voltar");
+                        System.out.print("Resposta: ");
                         int choiceCase4 = scan.nextInt();
+                        System.out.println("-----------------------------------------------------");
                         switch (choiceCase4) {
                             case 1:
                                 Collections.sort(idades);
+                                System.out.println("Lista ordenada!");
+                                goCase4 = false;
                                 break;
                             case 2:
                                 idades.sort(Collections.reverseOrder());
+                                System.out.println("Lista ordenada!");
+                                goCase4 = false;
+                                break;
+                            case 3:
                                 break;
                             default:
                                 System.out.println("Insira um valor válido!");
                                 goCase4 = false;
                         }
                     }
-                    System.out.println("Lista ordenada!");
                     break;
                 case 5:
                     System.out.print("Tem certeza dessa ação? [S/N] ");
                     respCase5 = scan.next().toUpperCase();
+                    System.out.println("-----------------------------------------------------");
 
                     if (respCase5.equals("S")) {
                         idades.clear();
