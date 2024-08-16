@@ -19,7 +19,6 @@ public class Main {
         }
 
         do {
-            System.out.println("-----------------------------------------------------");
             System.out.println("Lista de idades: " + idades);
             System.out.println("1. Consultar quantidade de idades");
             System.out.println("2. Adicionar idade");
@@ -34,6 +33,7 @@ public class Main {
             switch (choice) {
                 case 1:
                     System.out.println("Quantidade de idades na lista: " + idades.size());
+                    System.out.println("-----------------------------------------------------");
                     break;
                 case 2:
                     do {
@@ -50,6 +50,7 @@ public class Main {
                         }
                         System.out.print("Continuar adicionando? [S/N] ");
                         continueCase2 = scan.next().toUpperCase();
+                        System.out.println("Idades adicionadas!");
                         System.out.println("-----------------------------------------------------");
                     } while (continueCase2.equals("S"));
                     break;
@@ -118,6 +119,7 @@ public class Main {
                                 goCase4 = false;
                                 break;
                             case 3:
+                                goCase4 = false;
                                 break;
                             default:
                                 System.out.println("Insira um valor válido!");
@@ -133,6 +135,7 @@ public class Main {
                     if (respCase5.equals("S")) {
                         idades.clear();
                         System.out.println("Lista limpa!");
+                        System.out.println("-----------------------------------------------------");
                     }
                     break;
                 case 6:
