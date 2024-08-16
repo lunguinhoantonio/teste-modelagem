@@ -64,7 +64,8 @@ public class Main {
                     } while (continueCase3.equals("S"));
                     break;
                 case 4:
-                    do {
+                    boolean goCase4 = true;
+                    while (goCase4) {
                         System.out.println("Ordenar em ordem: ");
                         System.out.println("1. Crescente");
                         System.out.println("2. Decrescente");
@@ -72,17 +73,15 @@ public class Main {
                         switch (choiceCase4) {
                             case 1:
                                 Collections.sort(idades);
-                                continueCase4 = 0;
                                 break;
                             case 2:
                                 idades.sort(Collections.reverseOrder());
-                                continueCase4 = 0;
                                 break;
                             default:
                                 System.out.println("Insira um valor válido!");
-                                continueCase4 = 0;
+                                goCase4 = false;
                         }
-                    } while (continueCase4 != 0);
+                    }
                     System.out.println("Lista ordenada!");
                     break;
                 case 5:
@@ -92,10 +91,8 @@ public class Main {
                     if (respCase5.equals("S")) {
                         idades.clear();
                         System.out.println("Lista limpa!");
-                        break;
-                    } else {
-                        break;
                     }
+                    break;
                 case 6:
                     scan.close();
                     go = false;
