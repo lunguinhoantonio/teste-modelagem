@@ -111,11 +111,13 @@ public class Main {
                             case 1:
                                 Collections.sort(idades);
                                 System.out.println("Lista ordenada!");
+                                System.out.println("-----------------------------------------------------");
                                 goCase4 = false;
                                 break;
                             case 2:
                                 idades.sort(Collections.reverseOrder());
                                 System.out.println("Lista ordenada!");
+                                System.out.println("-----------------------------------------------------");
                                 goCase4 = false;
                                 break;
                             case 3:
