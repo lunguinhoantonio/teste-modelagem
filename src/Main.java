@@ -13,7 +13,7 @@ public class Main {
         ArrayList<Integer> idades = new ArrayList<>();
 
         while (idades.size() < 10) {
-            int randomNum = (int) (Math.random() * 101);
+            int randomNum = 1 + (int) (Math.random() * 99);
             if (!idades.contains(randomNum)) {
                 idades.add(randomNum);
             }
