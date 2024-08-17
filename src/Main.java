@@ -256,7 +256,7 @@ public class Main {
                                 break;
                         }
                     }
-
+                    break;
                 default:
                     System.out.println("Selecione uma opção válida!");
                     break;
