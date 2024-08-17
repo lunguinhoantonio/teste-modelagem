@@ -32,6 +32,7 @@ public class Main {
             switch (choice) {
                 case 0:
                     scan.close();
+                    idades.clear();
                     go = false;
                     break;
                 case 1:
@@ -188,6 +189,9 @@ public class Main {
                             System.out.println("Pares: " + pares);
                             System.out.println("Ímpares: " + impares);
                             System.out.println("-----------------------------------------------------");
+
+                            pares.clear();
+                            impares.clear();
                             break;
                         case 4:
                             ArrayList<Integer> menoresIdade = new ArrayList<>();
@@ -216,7 +220,7 @@ public class Main {
                                 System.out.println("Não tem adultos!");
                             } else {
                                 System.out.println("Adultos: " +
-                                        menoresIdade.size() +
+                                        adultosIdade.size() +
                                         ", e são eles: " + adultosIdade);
                             }
 
@@ -224,10 +228,15 @@ public class Main {
                                 System.out.println("Não tem idosos!");
                             } else {
                                 System.out.println("Idosos: " +
-                                        menoresIdade.size() +
+                                        idososIdade.size() +
                                         ", e são eles: " + idososIdade);
                             }
+
                             System.out.println("-----------------------------------------------------");
+
+                            menoresIdade.clear();
+                            adultosIdade.clear();
+                            idososIdade.clear();
                             break;
                         default:
                             System.out.println("Selecione uma opção válida!");
