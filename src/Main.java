@@ -26,7 +26,7 @@ public class Main {
             System.out.println("4. Ordenar lista");
             System.out.println("5. Informações da lista");
             System.out.print("Resposta: ");
-            int choice = scan.nextInt();
+            byte choice = scan.nextByte();
             System.out.println("-----------------------------------------------------");
 
             switch (choice) {
@@ -123,7 +123,7 @@ public class Main {
                         System.out.println("1. Crescente");
                         System.out.println("2. Decrescente");
                         System.out.print("Resposta: ");
-                        int choiceCase4 = scan.nextInt();
+                        byte choiceCase4 = scan.nextByte();
                         System.out.println("-----------------------------------------------------");
                         switch (choiceCase4) {
                             case 0:
