@@ -17,7 +17,6 @@ public class Main {
                 idades.add(randomNum);
             }
         }
-
         do {
             System.out.println("Lista de idades: " + idades);
             System.out.println("0. Fechar programa");
@@ -25,6 +24,7 @@ public class Main {
             System.out.println("2. Adicionar idade");
             System.out.println("3. Remover idade");
             System.out.println("4. Ordenar lista");
+            System.out.println("5. Informações da lista");
             System.out.print("Resposta: ");
             int choice = scan.nextInt();
             System.out.println("-----------------------------------------------------");
@@ -51,7 +51,7 @@ public class Main {
                         } else {
                             idades.add(addAge);
                         }
-                        System.out.print("Continuar adicionando? [S/N] ");
+                        System.out.print("Continuar adicionando? [S/N]: ");
                         continueCase2 = scan.next().toUpperCase();
                         System.out.println("Idades adicionadas!");
                         System.out.println("-----------------------------------------------------");
@@ -92,13 +92,13 @@ public class Main {
                                 boolean removedOption4 = idades.remove(Integer.valueOf(rmvAge));
                                 String msgCase3Option4 = (removedOption4) ? "Idade removida!" : "Idade não encontrada!";
                                 System.out.println(msgCase3Option4);
-                                System.out.print("Continuar removendo? [S/N] ");
+                                System.out.print("Continuar removendo? [S/N]: ");
                                 continueCase3 = scan.next().toUpperCase();
                                 System.out.println("-----------------------------------------------------");
                             } while (continueCase3.equals("S"));
                             break;
                         case 5:
-                            System.out.print("Tem certeza dessa ação? [S/N] ");
+                            System.out.print("Tem certeza dessa ação? [S/N]: ");
                             respCase5 = scan.next().toUpperCase();
                             System.out.println("-----------------------------------------------------");
 
@@ -137,17 +137,106 @@ public class Main {
                                 goCase4 = false;
                                 break;
                             default:
-                                System.out.println("Insira um valor válido!");
+                                System.out.println("Selecione uma opção válida!");
                                 goCase4 = false;
                         }
                     }
                     break;
+                case 5:
+                    System.out.println("0. Voltar");
+                    System.out.println("1. Ver a soma de todas as idades");
+                    System.out.println("2. Ver a média aritmética das idades");
+                    System.out.println("3. Ver idades pares e ímpares");
+                    System.out.println("4. Ver quantidade de menores de idade/adultos/idosos");
+                    int choiceCase5 = scan.nextInt();
+                    System.out.println("-----------------------------------------------------");
+                    switch (choiceCase5) {
+                        case 0:
+                            break;
+                        case 1:
+                            int somaCase5Option1 = 0;
+                            for (int num : idades) {
+                                somaCase5Option1 += num;
+                            }
+
+                            System.out.println("A soma de todas as idades é: " + somaCase5Option1);
+                            System.out.println("-----------------------------------------------------");
+                            break;
+                        case 2:
+                            int somaCase5Option2 = 0;
+                            double mediaArith;
+                            for (int num : idades) {
+                                somaCase5Option2 += num;
+                            }
+
+                            mediaArith = (double) somaCase5Option2 / idades.size();
+                            System.out.println("A média aritmética de todas as idades é " + mediaArith);
+                            System.out.println("-----------------------------------------------------");
+                            break;
+                        case 3:
+                            ArrayList<Integer> pares = new ArrayList<>();
+                            ArrayList<Integer> impares = new ArrayList<>();
+
+                            for (int num : idades) {
+                                if (num % 2 == 0) {
+                                    pares.add(num);
+                                } else {
+                                    impares.add(num);
+                                }
+                            }
+
+                            System.out.println("Pares: " + pares);
+                            System.out.println("Ímpares: " + impares);
+                            System.out.println("-----------------------------------------------------");
+                            break;
+                        case 4:
+                            ArrayList<Integer> menoresIdade = new ArrayList<>();
+                            ArrayList<Integer> adultosIdade = new ArrayList<>();
+                            ArrayList<Integer> idososIdade = new ArrayList<>();
+
+                            for (int num : idades) {
+                                if (num < 18) {
+                                    menoresIdade.add(num);
+                                } else if (num < 60) {
+                                    adultosIdade.add(num);
+                                } else {
+                                    idososIdade.add(num);
+                                }
+                            }
+
+                            if (menoresIdade.isEmpty()) {
+                                System.out.println("Não tem menores de idade!");
+                            } else {
+                                System.out.println("Menores de idade: " +
+                                        menoresIdade.size() +
+                                        ", e são eles: " + menoresIdade);
+                            }
+
+                            if (adultosIdade.isEmpty()) {
+                                System.out.println("Não tem adultos!");
+                            } else {
+                                System.out.println("Adultos: " +
+                                        menoresIdade.size() +
+                                        ", e são eles: " + adultosIdade);
+                            }
+
+                            if (idososIdade.isEmpty()) {
+                                System.out.println("Não tem idosos!");
+                            } else {
+                                System.out.println("Idosos: " +
+                                        menoresIdade.size() +
+                                        ", e são eles: " + idososIdade);
+                            }
+                            System.out.println("-----------------------------------------------------");
+                            break;
+                        default:
+                            System.out.println("Selecione uma opção válida!");
+                    }
+
                 default:
                     System.out.println("Selecione uma opção válida!");
 
-
             }
-
         } while (go);
     }
 }
