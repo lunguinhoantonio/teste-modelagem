@@ -31,6 +31,7 @@ public class Main {
 
             switch (choice) {
                 case 0:
+                    System.out.println("Espero ter gostado do programa! :D");
                     scan.close();
                     idades.clear();
                     go = false;
@@ -144,106 +145,121 @@ public class Main {
                     }
                     break;
                 case 5:
-                    System.out.println("0. Voltar");
-                    System.out.println("1. Ver a soma de todas as idades");
-                    System.out.println("2. Ver a média aritmética das idades");
-                    System.out.println("3. Ver idades pares e ímpares");
-                    System.out.println("4. Ver quantidade de menores de idade/adultos/idosos");
-                    int choiceCase5 = scan.nextInt();
-                    System.out.println("-----------------------------------------------------");
-                    switch (choiceCase5) {
-                        case 0:
-                            break;
-                        case 1:
-                            int somaCase5Option1 = 0;
-                            for (int num : idades) {
-                                somaCase5Option1 += num;
-                            }
-
-                            System.out.println("A soma de todas as idades é: " + somaCase5Option1);
-                            System.out.println("-----------------------------------------------------");
-                            break;
-                        case 2:
-                            int somaCase5Option2 = 0;
-                            double mediaArith;
-                            for (int num : idades) {
-                                somaCase5Option2 += num;
-                            }
-
-                            mediaArith = (double) somaCase5Option2 / idades.size();
-                            System.out.println("A média aritmética de todas as idades é " + mediaArith);
-                            System.out.println("-----------------------------------------------------");
-                            break;
-                        case 3:
-                            ArrayList<Integer> pares = new ArrayList<>();
-                            ArrayList<Integer> impares = new ArrayList<>();
-
-                            for (int num : idades) {
-                                if (num % 2 == 0) {
-                                    pares.add(num);
-                                } else {
-                                    impares.add(num);
+                    boolean goCase5 = true;
+                    while (goCase5) {
+                        System.out.println("0. Voltar");
+                        System.out.println("1. Ver a soma de todas as idades");
+                        System.out.println("2. Ver a média aritmética das idades");
+                        System.out.println("3. Ver idades pares e ímpares");
+                        System.out.println("4. Ver quantidade de menores de idade/adultos/idosos");
+                        System.out.print("Resposta: ");
+                        byte choiceCase5 = scan.nextByte();
+                        System.out.println("-----------------------------------------------------");
+                        switch (choiceCase5) {
+                            case 0:
+                                goCase5 = false;
+                                break;
+                            case 1:
+                                int somaCase5Option1 = 0;
+                                for (int num : idades) {
+                                    somaCase5Option1 += num;
                                 }
-                            }
 
-                            System.out.println("Pares: " + pares);
-                            System.out.println("Ímpares: " + impares);
-                            System.out.println("-----------------------------------------------------");
-
-                            pares.clear();
-                            impares.clear();
-                            break;
-                        case 4:
-                            ArrayList<Integer> menoresIdade = new ArrayList<>();
-                            ArrayList<Integer> adultosIdade = new ArrayList<>();
-                            ArrayList<Integer> idososIdade = new ArrayList<>();
-
-                            for (int num : idades) {
-                                if (num < 18) {
-                                    menoresIdade.add(num);
-                                } else if (num < 60) {
-                                    adultosIdade.add(num);
-                                } else {
-                                    idososIdade.add(num);
+                                System.out.println("A soma de todas as idades é: " + somaCase5Option1);
+                                System.out.println("-----------------------------------------------------");
+                                goCase5 = false;
+                                break;
+                            case 2:
+                                int somaCase5Option2 = 0;
+                                double mediaArith;
+                                for (int num : idades) {
+                                    somaCase5Option2 += num;
                                 }
-                            }
 
-                            if (menoresIdade.isEmpty()) {
-                                System.out.println("Não tem menores de idade!");
-                            } else {
-                                System.out.println("Menores de idade: " +
-                                        menoresIdade.size() +
-                                        ", e são eles: " + menoresIdade);
-                            }
+                                mediaArith = (double) somaCase5Option2 / idades.size();
+                                System.out.println("A média aritmética de todas as idades é " + mediaArith);
+                                System.out.println("-----------------------------------------------------");
+                                goCase5 = false;
+                                break;
+                            case 3:
+                                ArrayList<Integer> pares = new ArrayList<>();
+                                ArrayList<Integer> impares = new ArrayList<>();
 
-                            if (adultosIdade.isEmpty()) {
-                                System.out.println("Não tem adultos!");
-                            } else {
-                                System.out.println("Adultos: " +
-                                        adultosIdade.size() +
-                                        ", e são eles: " + adultosIdade);
-                            }
+                                for (int num : idades) {
+                                    if (num % 2 == 0) {
+                                        pares.add(num);
+                                    } else {
+                                        impares.add(num);
+                                    }
+                                }
 
-                            if (idososIdade.isEmpty()) {
-                                System.out.println("Não tem idosos!");
-                            } else {
-                                System.out.println("Idosos: " +
-                                        idososIdade.size() +
-                                        ", e são eles: " + idososIdade);
-                            }
+                                System.out.println("Pares: " + pares);
+                                System.out.println("Ímpares: " + impares);
+                                System.out.println("-----------------------------------------------------");
 
-                            System.out.println("-----------------------------------------------------");
+                                pares.clear();
+                                impares.clear();
+                                goCase5 = false;
+                                break;
+                            case 4:
+                                ArrayList<Integer> menoresIdade = new ArrayList<>();
+                                ArrayList<Integer> adultosIdade = new ArrayList<>();
+                                ArrayList<Integer> idososIdade = new ArrayList<>();
 
-                            menoresIdade.clear();
-                            adultosIdade.clear();
-                            idososIdade.clear();
-                            break;
-                        default:
-                            System.out.println("Selecione uma opção válida!");
+                                for (int num : idades) {
+                                    if (num < 18) {
+                                        menoresIdade.add(num);
+                                    } else if (num < 60) {
+                                        adultosIdade.add(num);
+                                    } else {
+                                        idososIdade.add(num);
+                                    }
+                                }
+
+                                if (menoresIdade.isEmpty()) {
+                                    System.out.println("Não tem menores de idade!");
+                                } else {
+                                    Collections.sort(menoresIdade);
+                                    System.out.println("Menores de idade: " +
+                                            menoresIdade.size() +
+                                            ", e são eles: " + menoresIdade);
+                                }
+
+                                if (adultosIdade.isEmpty()) {
+                                    System.out.println("Não tem adultos!");
+                                } else {
+                                    Collections.sort(adultosIdade);
+                                    System.out.println("Adultos: " +
+                                            adultosIdade.size() +
+                                            ", e são eles: " + adultosIdade);
+                                }
+
+                                if (idososIdade.isEmpty()) {
+                                    System.out.println("Não tem idosos!");
+                                } else {
+                                    Collections.sort(idososIdade);
+                                    System.out.println("Idosos: " +
+                                            idososIdade.size() +
+                                            ", e são eles: " + idososIdade);
+                                }
+
+                                System.out.println("-----------------------------------------------------");
+
+                                menoresIdade.clear();
+                                adultosIdade.clear();
+                                idososIdade.clear();
+                                goCase5 = false;
+                                break;
+                            default:
+                                System.out.println("Selecione uma opção válida!");
+                                goCase5 = false;
+                                break;
+                        }
                     }
 
                 default:
                     System.out.println("Selecione uma opção válida!");
+                    break;
 
             }
         } while (go);
