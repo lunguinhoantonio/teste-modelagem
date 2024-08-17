@@ -161,9 +161,9 @@ public class Main {
                                 goCase5 = false;
                                 break;
                             case 1:
-                                int somaCase5Option1 = 0;
+                                short somaCase5Option1 = 0;
                                 for (int num : idades) {
-                                    somaCase5Option1 += num;
+                                    somaCase5Option1 += (short) num;
                                 }
 
                                 System.out.println("A soma de todas as idades é: " + somaCase5Option1);
@@ -171,10 +171,10 @@ public class Main {
                                 goCase5 = false;
                                 break;
                             case 2:
-                                int somaCase5Option2 = 0;
+                                short somaCase5Option2 = 0;
                                 double mediaArith;
                                 for (int num : idades) {
-                                    somaCase5Option2 += num;
+                                    somaCase5Option2 += (short) num;
                                 }
 
                                 mediaArith = (double) somaCase5Option2 / idades.size();
@@ -183,14 +183,14 @@ public class Main {
                                 goCase5 = false;
                                 break;
                             case 3:
-                                ArrayList<Integer> pares = new ArrayList<>();
-                                ArrayList<Integer> impares = new ArrayList<>();
+                                ArrayList<Byte> pares = new ArrayList<>();
+                                ArrayList<Byte> impares = new ArrayList<>();
 
                                 for (int num : idades) {
                                     if (num % 2 == 0) {
-                                        pares.add(num);
+                                        pares.add((byte) num);
                                     } else {
-                                        impares.add(num);
+                                        impares.add((byte) num);
                                     }
                                 }
 
@@ -203,17 +203,17 @@ public class Main {
                                 goCase5 = false;
                                 break;
                             case 4:
-                                ArrayList<Integer> menoresIdade = new ArrayList<>();
-                                ArrayList<Integer> adultosIdade = new ArrayList<>();
-                                ArrayList<Integer> idososIdade = new ArrayList<>();
+                                ArrayList<Byte> menoresIdade = new ArrayList<>();
+                                ArrayList<Byte> adultosIdade = new ArrayList<>();
+                                ArrayList<Byte> idososIdade = new ArrayList<>();
 
                                 for (int num : idades) {
                                     if (num < 18) {
-                                        menoresIdade.add(num);
+                                        menoresIdade.add((byte) num);
                                     } else if (num < 60) {
-                                        adultosIdade.add(num);
+                                        adultosIdade.add((byte) num);
                                     } else {
-                                        idososIdade.add(num);
+                                        idososIdade.add((byte) num);
                                     }
                                 }
 
