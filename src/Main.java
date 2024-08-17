@@ -31,9 +31,10 @@ public class Main {
 
             switch (choice) {
                 case 0:
-                    System.out.println("Espero ter gostado do programa! :D");
                     scan.close();
                     idades.clear();
+                    System.out.println("Espero ter gostado do programa! :D");
+                    System.out.println("-----------------------------------------------------");
                     go = false;
                     break;
                 case 1:
