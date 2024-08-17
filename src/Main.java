@@ -8,11 +8,11 @@ public class Main {
         String continueCase2 = "";
         String continueCase3;
         String respCase5;
-        int addAge, rmvAge;
-        ArrayList<Integer> idades = new ArrayList<>();
+        short addAge, rmvAge;
+        ArrayList<Short> idades = new ArrayList<>();
 
         while (idades.size() < 10) {
-            int randomNum = 1 + (int) (Math.random() * 99);
+            short randomNum = (short) (1 + (Math.random() * 99));
             if (!idades.contains(randomNum)) {
                 idades.add(randomNum);
             }
@@ -44,7 +44,7 @@ public class Main {
                 case 2:
                     do {
                         System.out.print("Adicionar idade: ");
-                        addAge = scan.nextInt();
+                        addAge = scan.nextShort();
                         if (addAge < 0) {
                             System.out.println("A idade não pode ser negativa!");
                             continue;
@@ -91,8 +91,8 @@ public class Main {
                         case 4:
                             do {
                                 System.out.print("Remover idade: ");
-                                rmvAge = scan.nextInt();
-                                boolean removedOption4 = idades.remove(Integer.valueOf(rmvAge));
+                                rmvAge = scan.nextShort();
+                                boolean removedOption4 = idades.remove(Short.valueOf(rmvAge));
                                 String msgCase3Option4 = (removedOption4) ? "Idade removida!" : "Idade não encontrada!";
                                 System.out.println(msgCase3Option4);
                                 System.out.print("Continuar removendo? [S/N]: ");
