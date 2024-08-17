@@ -35,7 +35,6 @@ public class Main {
                     scan.close();
                     idades.clear();
                     go = false;
-                    System.exit(0);
                     break;
                 case 1:
                     System.out.println("Quantidade de idades na lista: " + idades.size());
