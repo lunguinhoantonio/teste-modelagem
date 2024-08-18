@@ -270,13 +270,15 @@ public class Main {
                                 if (pares.isEmpty()) {
                                     System.out.println("Não existem números pares!");
                                 } else {
-                                    System.out.println("Pares: " + pares);
+                                    Collections.sort(pares);
+                                    System.out.println("Pares: " + pares.size() + ", e são eles: " + pares);
                                 }
 
                                 if (impares.isEmpty()) {
                                     System.out.println("Não existem números ímpares!");
                                 } else {
-                                    System.out.println("Ímpares: " + impares);
+                                    Collections.sort(impares);
+                                    System.out.println("Ímpares: " + impares.size() + ", e são eles: " + impares);
                                 }
 
                                 System.out.println("-----------------------------------------------------");
