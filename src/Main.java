@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         boolean go = true;
-        String continueCase2 = "";
+        String continueCase2Option2 = "";
         String continueCase3;
         String respCase5;
         short addAge, rmvAge;
@@ -88,9 +88,9 @@ public class Main {
                                         idades.add(addAge);
                                     }
                                     System.out.print("Continuar adicionando? [S/N]: ");
-                                    continueCase2 = scan.next().toUpperCase();
+                                    continueCase2Option2 = scan.next().toUpperCase();
                                     System.out.println("-----------------------------------------------------");
-                                } while (continueCase2.equals("S"));
+                                } while (continueCase2Option2.equals("S"));
                                 System.out.println("Idades adicionadas!");
                                 System.out.println("-----------------------------------------------------");
                                 goCase2 = false;
@@ -99,6 +99,12 @@ public class Main {
                     }
                     break;
                 case 3:
+                    if (idades.isEmpty()) {
+                        System.out.println("A lista já está vazia!");
+                        System.out.println("-----------------------------------------------------");
+                        break;
+                    }
+
                     System.out.println("0. Voltar");
                     System.out.println("1. Remover todas abaixo de 18");
                     System.out.println("2. Remover todas acima ou iguais a 18 e abaixo de 60");
@@ -113,17 +119,20 @@ public class Main {
                             break;
                         case 1:
                             boolean removedOption1 = idades.removeIf(num -> num < 18);
-                            String msgCase3Option1 = (removedOption1) ? "Idades removidas!" : "Idades não encontradas!";
+                            String msgCase3Option1 = (removedOption1)
+                                    ? "Idade(s) removida(s)!" : "Faixa de idade não encontradas!";
                             System.out.println(msgCase3Option1);
                             break;
                         case 2:
                             boolean removedOption2 = idades.removeIf(num -> num >= 18 && num < 60);
-                            String msgCase3Option2 = (removedOption2) ? "Idades removidas!" : "Idades não encontradas!";
+                            String msgCase3Option2 = (removedOption2)
+                                    ? "Idades removidas!" : "Faixa de idade não encontradas!";
                             System.out.println(msgCase3Option2);
                             break;
                         case 3:
                             boolean removedOption3 = idades.removeIf(num -> num >= 60);
-                            String msgCase3Option3 = (removedOption3) ? "Idades removidas!" : "Idades não encontradas!";
+                            String msgCase3Option3 = (removedOption3)
+                                    ? "Idade(s) removida(s)!" : "Faixa de idade não encontradas!";
                             System.out.println(msgCase3Option3);
                             break;
                         case 4:
@@ -131,7 +140,8 @@ public class Main {
                                 System.out.print("Remover idade: ");
                                 rmvAge = scan.nextShort();
                                 boolean removedOption4 = idades.remove(Short.valueOf(rmvAge));
-                                String msgCase3Option4 = (removedOption4) ? "Idade removida!" : "Idade não encontrada!";
+                                String msgCase3Option4 = (removedOption4)
+                                        ? "Idade removida!" : "Idade não encontrada!";
                                 System.out.println(msgCase3Option4);
                                 System.out.print("Continuar removendo? [S/N]: ");
                                 continueCase3 = scan.next().toUpperCase();
@@ -154,6 +164,11 @@ public class Main {
                     }
                     break;
                 case 4:
+                    if (idades.size() <= 1) {
+                        System.out.println("Não é possível ordenar a lista com 1 elemento ou menos!");
+                        System.out.println("-----------------------------------------------------");
+                        break;
+                    }
                     boolean goCase4 = true;
                     while (goCase4) {
                         System.out.println("Ordenar em ordem: ");
@@ -199,6 +214,12 @@ public class Main {
                                 goCase5 = false;
                                 break;
                             case 1:
+                                if (idades.size() <= 1) {
+                                    System.out.println("Não é possível realizar essa ação " +
+                                            "com a lista tendo 1 elemento ou menos!");
+                                    System.out.println("-----------------------------------------------------");
+                                    break;
+                                }
                                 short somaCase5Option1 = 0;
                                 for (short num : idades) {
                                     somaCase5Option1 += num;
@@ -209,6 +230,12 @@ public class Main {
                                 goCase5 = false;
                                 break;
                             case 2:
+                                if (idades.size() <= 1) {
+                                    System.out.println("Não é possível realizar essa ação " +
+                                            "com a lista tendo 1 elemento ou menos!");
+                                    System.out.println("-----------------------------------------------------");
+                                    break;
+                                }
                                 short somaCase5Option2 = 0;
                                 double mediaArith;
                                 for (int num : idades) {
@@ -221,6 +248,11 @@ public class Main {
                                 goCase5 = false;
                                 break;
                             case 3:
+                                if (idades.isEmpty()) {
+                                    System.out.println("Não é possível realizar essa ação se a lista está vazia!");
+                                    System.out.println("-----------------------------------------------------");
+                                    break;
+                                }
                                 ArrayList<Byte> pares = new ArrayList<>();
                                 ArrayList<Byte> impares = new ArrayList<>();
 
@@ -231,16 +263,29 @@ public class Main {
                                         impares.add((byte) num);
                                     }
                                 }
+                                if (pares.isEmpty()) {
+                                    System.out.println("Não existem números pares!");
+                                } else {
+                                    System.out.println("Pares: " + pares);
+                                }
 
-                                System.out.println("Pares: " + pares);
-                                System.out.println("Ímpares: " + impares);
+                                if (impares.isEmpty()) {
+                                    System.out.println("Não existem números ímpares!");
+                                } else {
+                                    System.out.println("Ímpares: " + impares);
+                                }
+
                                 System.out.println("-----------------------------------------------------");
-
                                 pares.clear();
                                 impares.clear();
                                 goCase5 = false;
                                 break;
                             case 4:
+                                if (idades.isEmpty()) {
+                                    System.out.println("Não é possível realizar essa ação se a lista está vazia!");
+                                    System.out.println("-----------------------------------------------------");
+                                    break;
+                                }
                                 ArrayList<Byte> menoresIdade = new ArrayList<>();
                                 ArrayList<Byte> adultosIdade = new ArrayList<>();
                                 ArrayList<Byte> idososIdade = new ArrayList<>();
