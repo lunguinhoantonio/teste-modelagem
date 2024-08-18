@@ -9,11 +9,15 @@ public class Main {
         String continueCase3;
         short addAge;
         ArrayList<Short> idades = new ArrayList<>();
-        while (idades.size() < 120) {
-            short randomNum = (short) (1 + (Math.random() * 120));
+        while (idades.size() < 100) {
+            short randomNum = (short) (1 + (Math.random() * 80));
             idades.add(randomNum);
-
         }
+        while (idades.size() < 120) {
+            short randomNum = (short) (1 + (Math.random() * 110));
+            idades.add(randomNum);
+        }
+
         do {
             System.out.println("Lista de idades: " + idades);
             System.out.println("0. Fechar programa");
