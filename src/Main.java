@@ -9,7 +9,7 @@ public class Main {
         String continueCase3;
         short addAge;
         ArrayList<Short> idades = new ArrayList<>();
-        while (idades.size() < 100) {
+        while (idades.size() < 120) {
             short randomNum = (short) (1 + (Math.random() * 120));
             if (!idades.contains(randomNum)) {
                 idades.add(randomNum);
@@ -148,7 +148,9 @@ public class Main {
                             } while (continueCase3.equals("S"));
                             break;
                         case 5:
-                            System.out.print("Tem certeza dessa ação? [S/N]: ");
+                            System.out.print("Não é possível a recuperação das " +
+                                    "idades após o confirmamento dessa ação. " +
+                                    "Tem certeza dessa ação? [S/N]: ");
                             String respCase5 = scan.next().toUpperCase();
                             System.out.println("-----------------------------------------------------");
 
