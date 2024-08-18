@@ -221,7 +221,7 @@ public class Main {
                                     System.out.println("Não é possível realizar essa ação " +
                                             "com a lista tendo 1 elemento ou menos!");
                                     System.out.println("-----------------------------------------------------");
-                                    break;
+                                    continue;
                                 }
                                 short somaCase5Option1 = 0;
                                 for (short num : idades) {
@@ -237,7 +237,7 @@ public class Main {
                                     System.out.println("Não é possível realizar essa ação " +
                                             "com a lista tendo 1 elemento ou menos!");
                                     System.out.println("-----------------------------------------------------");
-                                    break;
+                                    continue;
                                 }
                                 short somaCase5Option2 = 0;
                                 double mediaArith;
@@ -267,7 +267,7 @@ public class Main {
                                 if (idades.isEmpty()) {
                                     System.out.println("Não é possível realizar essa ação se a lista está vazia!");
                                     System.out.println("-----------------------------------------------------");
-                                    break;
+                                    continue;
                                 }
                                 ArrayList<Byte> pares = new ArrayList<>();
                                 ArrayList<Byte> impares = new ArrayList<>();
@@ -302,7 +302,7 @@ public class Main {
                                 if (idades.isEmpty()) {
                                     System.out.println("Não é possível realizar essa ação se a lista está vazia!");
                                     System.out.println("-----------------------------------------------------");
-                                    break;
+                                    continue;
                                 }
                                 ArrayList<Byte> menoresIdade = new ArrayList<>();
                                 ArrayList<Byte> adultosIdade = new ArrayList<>();
@@ -354,6 +354,7 @@ public class Main {
                                 break;
                             default:
                                 System.out.println("Selecione uma opção válida!");
+                                System.out.println("-----------------------------------------------------");
                                 goCase5 = false;
                                 break;
                         }
@@ -361,6 +362,7 @@ public class Main {
                     break;
                 default:
                     System.out.println("Selecione uma opção válida!");
+                    System.out.println("-----------------------------------------------------");
                     break;
             }
         } while (go);
