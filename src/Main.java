@@ -149,9 +149,8 @@ public class Main {
                             } while (continueCase3.equals("S"));
                             break;
                         case 5:
-                            System.out.print("Não é possível a recuperação das " +
-                                    "idades após o confirmamento dessa ação. " +
-                                    "Tem certeza dessa ação? [S/N]: ");
+                            System.out.println("Não é possível a recuperação das idades após o confirmamento dessa ação.");
+                            System.out.print("Tem certeza dessa ação? [S/N]: ");
                             String respCase5 = scan.next().toUpperCase();
                             System.out.println("-----------------------------------------------------");
 
@@ -208,8 +207,9 @@ public class Main {
                         System.out.println("0. Voltar");
                         System.out.println("1. Ver a soma de todas as idades");
                         System.out.println("2. Ver a média aritmética das idades");
-                        System.out.println("3. Ver idades pares e ímpares");
-                        System.out.println("4. Ver quantidade de menores de idade/adultos/idosos");
+                        System.out.println("3. Ver a mediana das idades");
+                        System.out.println("4. Ver idades pares e ímpares");
+                        System.out.println("5. Ver quantidade de menores de idade/adultos/idosos");
                         System.out.print("Resposta: ");
                         byte choiceCase5 = scan.nextByte();
                         System.out.println("-----------------------------------------------------");
@@ -252,6 +252,28 @@ public class Main {
                                 goCase5 = false;
                                 break;
                             case 3:
+                                if (idades.size() <= 1) {
+                                    System.out.println("Não é possível realizar essa ação " +
+                                            "com a lista tendo 1 elemento ou menos!");
+                                    System.out.println("-----------------------------------------------------");
+                                    break;
+                                }
+                                ArrayList<Short> toCalcMediana = new ArrayList<>(idades);
+                                float mediana;
+                                short t = (short) toCalcMediana.size();
+                                Collections.sort(toCalcMediana);
+                                if (t % 2 == 0) {
+                                    mediana = (float) ((toCalcMediana.get(t / 2 - 1)
+                                            + toCalcMediana.get(t / 2)) / 2.0);
+                                } else {
+                                    mediana = toCalcMediana.get(t / 2);
+                                }
+                                System.out.printf("A mediana das idades é de %.2f!\n", mediana);
+                                System.out.println("-----------------------------------------------------");
+                                toCalcMediana.clear();
+                                goCase5 = false;
+                                break;
+                            case 4:
                                 if (idades.isEmpty()) {
                                     System.out.println("Não é possível realizar essa ação se a lista está vazia!");
                                     System.out.println("-----------------------------------------------------");
@@ -286,7 +308,7 @@ public class Main {
                                 impares.clear();
                                 goCase5 = false;
                                 break;
-                            case 4:
+                            case 5:
                                 if (idades.isEmpty()) {
                                     System.out.println("Não é possível realizar essa ação se a lista está vazia!");
                                     System.out.println("-----------------------------------------------------");
