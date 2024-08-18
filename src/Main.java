@@ -10,7 +10,6 @@ public class Main {
         String respCase5;
         short addAge, rmvAge;
         ArrayList<Short> idades = new ArrayList<>();
-
         while (idades.size() < 10) {
             short randomNum = (short) (1 + (Math.random() * 99));
             if (!idades.contains(randomNum)) {
@@ -42,23 +41,62 @@ public class Main {
                     System.out.println("-----------------------------------------------------");
                     break;
                 case 2:
-                    do {
-                        System.out.print("Adicionar idade: ");
-                        addAge = scan.nextShort();
-                        if (addAge < 0) {
-                            System.out.println("A idade não pode ser negativa!");
-                            continue;
-                        } else if (addAge > 120){
-                            System.out.println("É pouco provável que exista alguém com essa idade!");
-                            continue;
-                        } else {
-                            idades.add(addAge);
-                        }
-                        System.out.print("Continuar adicionando? [S/N]: ");
-                        continueCase2 = scan.next().toUpperCase();
-                        System.out.println("Idades adicionadas!");
+                    boolean goCase2 = true;
+                    short quantIdades;
+                    while (goCase2) {
+                        System.out.println("0. Voltar");
+                        System.out.println("1. Adicionar quantidades predefinidas");
+                        System.out.println("2. Adicionar quantos quiser");
+                        System.out.print("Resposta: ");
+                        byte choiceCase2 = scan.nextByte();
                         System.out.println("-----------------------------------------------------");
-                    } while (continueCase2.equals("S"));
+                        switch (choiceCase2) {
+                            case 0:
+                                goCase2 = false;
+                                break;
+                            case 1:
+                                System.out.print("Quantas idades deseja adicionar? ");
+                                quantIdades = scan.nextShort();
+                                for (int c = 0; c < quantIdades; c++) {
+                                    System.out.print("Adicionar idade: ");
+                                    addAge = scan.nextShort();
+                                    System.out.println("-----------------------------------------------------");
+                                    if (addAge < 0) {
+                                        System.out.println("A idade não pode ser negativa!");
+                                    } else if (addAge > 120){
+                                        System.out.println("É pouco provável que exista alguém com essa idade!");
+                                    } else {
+                                        idades.add(addAge);
+                                        System.out.println("Idade adicionada!");
+                                    }
+                                }
+                                System.out.println("Lista atualizada!");
+                                System.out.println("-----------------------------------------------------");
+                                goCase2 = false;
+                                break;
+                            case 2:
+                                do {
+                                    System.out.print("Adicionar idade: ");
+                                    addAge = scan.nextShort();
+                                    if (addAge < 0) {
+                                        System.out.println("A idade não pode ser negativa!");
+                                        continue;
+                                    } else if (addAge > 120){
+                                        System.out.println("É pouco provável que exista alguém com essa idade!");
+                                        continue;
+                                    } else {
+                                        idades.add(addAge);
+                                    }
+                                    System.out.print("Continuar adicionando? [S/N]: ");
+                                    continueCase2 = scan.next().toUpperCase();
+                                    System.out.println("-----------------------------------------------------");
+                                } while (continueCase2.equals("S"));
+                                System.out.println("Idades adicionadas!");
+                                System.out.println("-----------------------------------------------------");
+                                goCase2 = false;
+                                break;
+                        }
+                    }
                     break;
                 case 3:
                     System.out.println("0. Voltar");
@@ -162,8 +200,8 @@ public class Main {
                                 break;
                             case 1:
                                 short somaCase5Option1 = 0;
-                                for (int num : idades) {
-                                    somaCase5Option1 += (short) num;
+                                for (short num : idades) {
+                                    somaCase5Option1 += num;
                                 }
 
                                 System.out.println("A soma de todas as idades é: " + somaCase5Option1);
