@@ -206,10 +206,9 @@ public class Main {
                     while (goCase5) {
                         System.out.println("0. Voltar");
                         System.out.println("1. Ver a soma de todas as idades");
-                        System.out.println("2. Ver a média aritmética das idades");
-                        System.out.println("3. Ver a mediana das idades");
-                        System.out.println("4. Ver idades pares e ímpares");
-                        System.out.println("5. Ver quantidade de menores de idade/adultos/idosos");
+                        System.out.println("2. Ver a média e mediana das idades");
+                        System.out.println("3. Ver idades pares e ímpares");
+                        System.out.println("4. Ver quantidade de menores de idade/adultos/idosos");
                         System.out.print("Resposta: ");
                         byte choiceCase5 = scan.nextByte();
                         System.out.println("-----------------------------------------------------");
@@ -248,16 +247,7 @@ public class Main {
 
                                 mediaArith = (double) somaCase5Option2 / idades.size();
                                 System.out.println("A média aritmética de todas as idades é " + mediaArith);
-                                System.out.println("-----------------------------------------------------");
-                                goCase5 = false;
-                                break;
-                            case 3:
-                                if (idades.size() <= 1) {
-                                    System.out.println("Não é possível realizar essa ação " +
-                                            "com a lista tendo 1 elemento ou menos!");
-                                    System.out.println("-----------------------------------------------------");
-                                    break;
-                                }
+
                                 ArrayList<Short> toCalcMediana = new ArrayList<>(idades);
                                 float mediana;
                                 short t = (short) toCalcMediana.size();
@@ -268,12 +258,12 @@ public class Main {
                                 } else {
                                     mediana = toCalcMediana.get(t / 2);
                                 }
-                                System.out.printf("A mediana das idades é de %.2f!\n", mediana);
+                                System.out.printf("A mediana das idades é %.2f!\n", mediana);
                                 System.out.println("-----------------------------------------------------");
                                 toCalcMediana.clear();
                                 goCase5 = false;
                                 break;
-                            case 4:
+                            case 3:
                                 if (idades.isEmpty()) {
                                     System.out.println("Não é possível realizar essa ação se a lista está vazia!");
                                     System.out.println("-----------------------------------------------------");
@@ -308,7 +298,7 @@ public class Main {
                                 impares.clear();
                                 goCase5 = false;
                                 break;
-                            case 5:
+                            case 4:
                                 if (idades.isEmpty()) {
                                     System.out.println("Não é possível realizar essa ação se a lista está vazia!");
                                     System.out.println("-----------------------------------------------------");
