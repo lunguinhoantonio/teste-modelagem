@@ -7,11 +7,10 @@ public class Main {
         boolean go = true;
         String continueCase2Option2 = "";
         String continueCase3;
-        String respCase5;
-        short addAge, rmvAge;
+        short addAge;
         ArrayList<Short> idades = new ArrayList<>();
-        while (idades.size() < 10) {
-            short randomNum = (short) (1 + (Math.random() * 99));
+        while (idades.size() < 100) {
+            short randomNum = (short) (1 + (Math.random() * 120));
             if (!idades.contains(randomNum)) {
                 idades.add(randomNum);
             }
@@ -63,7 +62,7 @@ public class Main {
                                     System.out.println("-----------------------------------------------------");
                                     if (addAge < 0) {
                                         System.out.println("A idade não pode ser negativa!");
-                                    } else if (addAge > 120){
+                                    } else if (addAge > 120) {
                                         System.out.println("É pouco provável que exista alguém com essa idade!");
                                     } else {
                                         idades.add(addAge);
@@ -81,7 +80,7 @@ public class Main {
                                     if (addAge < 0) {
                                         System.out.println("A idade não pode ser negativa!");
                                         continue;
-                                    } else if (addAge > 120){
+                                    } else if (addAge > 120) {
                                         System.out.println("É pouco provável que exista alguém com essa idade!");
                                         continue;
                                     } else {
@@ -138,7 +137,7 @@ public class Main {
                         case 4:
                             do {
                                 System.out.print("Remover idade: ");
-                                rmvAge = scan.nextShort();
+                                short rmvAge = scan.nextShort();
                                 boolean removedOption4 = idades.remove(Short.valueOf(rmvAge));
                                 String msgCase3Option4 = (removedOption4)
                                         ? "Idade removida!" : "Idade não encontrada!";
@@ -150,7 +149,7 @@ public class Main {
                             break;
                         case 5:
                             System.out.print("Tem certeza dessa ação? [S/N]: ");
-                            respCase5 = scan.next().toUpperCase();
+                            String respCase5 = scan.next().toUpperCase();
                             System.out.println("-----------------------------------------------------");
 
                             if (respCase5.equals("S")) {
@@ -344,7 +343,6 @@ public class Main {
                 default:
                     System.out.println("Selecione uma opção válida!");
                     break;
-
             }
         } while (go);
     }
