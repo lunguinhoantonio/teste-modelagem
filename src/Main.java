@@ -11,9 +11,8 @@ public class Main {
         ArrayList<Short> idades = new ArrayList<>();
         while (idades.size() < 120) {
             short randomNum = (short) (1 + (Math.random() * 120));
-            if (!idades.contains(randomNum)) {
-                idades.add(randomNum);
-            }
+            idades.add(randomNum);
+
         }
         do {
             System.out.println("Lista de idades: " + idades);
@@ -59,14 +58,16 @@ public class Main {
                                 for (int c = 0; c < quantIdades; c++) {
                                     System.out.print("Adicionar idade: ");
                                     addAge = scan.nextShort();
-                                    System.out.println("-----------------------------------------------------");
                                     if (addAge < 0) {
                                         System.out.println("A idade não pode ser negativa!");
+                                        System.out.println("-----------------------------------------------------");
                                     } else if (addAge > 120) {
                                         System.out.println("É pouco provável que exista alguém com essa idade!");
+                                        System.out.println("-----------------------------------------------------");
                                     } else {
                                         idades.add(addAge);
                                         System.out.println("Idade adicionada!");
+                                        System.out.println("-----------------------------------------------------");
                                     }
                                 }
                                 System.out.println("Lista atualizada!");
@@ -186,11 +187,13 @@ public class Main {
                             case 1:
                                 Collections.sort(idades);
                                 System.out.println("Lista ordenada!");
+                                System.out.println("-----------------------------------------------------");
                                 goCase4 = false;
                                 break;
                             case 2:
                                 idades.sort(Collections.reverseOrder());
                                 System.out.println("Lista ordenada!");
+                                System.out.println("-----------------------------------------------------");
                                 goCase4 = false;
                                 break;
                             default:
