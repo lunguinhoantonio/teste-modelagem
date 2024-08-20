@@ -9,10 +9,13 @@ public class Main {
         String continueCase3;
         short addAge;
         ArrayList<Short> idades = new ArrayList<>();
+        // Criando números aleatórios entre 1 e 80 até que o tamanho do array seja de 100
         while (idades.size() < 100) {
             short randomNum = (short) (1 + (Math.random() * 80));
             idades.add(randomNum);
         }
+        /* Criando números aleatórios entre 1 e 110 até que o tamanho da array seja de 120, fiz separado para que
+        * a probabilidade de uma idade ser maior que 80 seja menor */
         while (idades.size() < 120) {
             short randomNum = (short) (1 + (Math.random() * 110));
             idades.add(randomNum);
@@ -122,6 +125,13 @@ public class Main {
                         case 0:
                             break;
                         case 1:
+                            /* Esse `num -> num < 18` é chamada de Lambda Expression, tem a mesma função que um forEach:
+                            * for (Integer num : idades) {
+                            *   if (num < 18) {
+                            *   idades.remove(num);
+                            *   }
+                            * }
+                            * */
                             boolean removedOption1 = idades.removeIf(num -> num < 18);
                             String msgCase3Option1 = (removedOption1)
                                     ? "Idade(s) removida(s)!" : "Faixa de idade não encontradas!";
@@ -228,8 +238,8 @@ public class Main {
                                     continue;
                                 }
                                 short somaCase5Option1 = 0;
-                                for (short num : idades) {
-                                    somaCase5Option1 += num;
+                                for (short numbers : idades) {
+                                    somaCase5Option1 += numbers;
                                 }
 
                                 System.out.println("A soma de todas as idades é: " + somaCase5Option1);
@@ -252,6 +262,7 @@ public class Main {
                                 mediaArith = (double) somaCase5Option2 / idades.size();
                                 System.out.println("A média aritmética de todas as idades é " + mediaArith);
 
+                                // Fazendo a clonagem dos elementos do ArrayList idades para toCalcMediana
                                 ArrayList<Short> toCalcMediana = new ArrayList<>(idades);
                                 float mediana;
                                 short t = (short) toCalcMediana.size();
