@@ -2,10 +2,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 public class Main {
-    public static void dividirTerminal() {
-        System.out.println("-----------------------------------------------------");
-    }
-
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         boolean go = true;
@@ -18,8 +14,8 @@ public class Main {
             short randomNum = (short) (1 + (Math.random() * 80));
             idades.add(randomNum);
         }
-        /* Criando números aleatórios entre 1 e 110 até que o tamanho da array seja de 120, fiz separado para que
-        * a probabilidade de uma idade ser maior que 80 seja menor */
+        /* Criando números aleatórios entre 1 e 110 até que o tamanho da array seja de 120, fiz
+        separado para que a probabilidade de uma idade ser maior que 80 seja menor */
         while (idades.size() < 120) {
             short randomNum = (short) (1 + (Math.random() * 110));
             idades.add(randomNum);
@@ -35,19 +31,19 @@ public class Main {
             System.out.println("5. Informações da lista");
             System.out.print("Resposta: ");
             byte choice = scan.nextByte();
-            dividirTerminal();
+            Dividir.dividirTerminal();
 
             switch (choice) {
                 case 0:
                     scan.close();
                     idades.clear();
                     System.out.println("Espero ter gostado do programa! :D");
-                    dividirTerminal();
+                    Dividir.dividirTerminal();
                     go = false;
                     break;
                 case 1:
                     System.out.println("Quantidade de idades na lista: " + idades.size());
-                    dividirTerminal();
+                    Dividir.dividirTerminal();
                     break;
                 case 2:
                     boolean goCase2 = true;
@@ -58,7 +54,7 @@ public class Main {
                         System.out.println("2. Adicionar quantos quiser");
                         System.out.print("Resposta: ");
                         byte choiceCase2 = scan.nextByte();
-                        dividirTerminal();
+                        Dividir.dividirTerminal();
                         switch (choiceCase2) {
                             case 0:
                                 goCase2 = false;
@@ -71,18 +67,18 @@ public class Main {
                                     addAge = scan.nextShort();
                                     if (addAge < 0) {
                                         System.out.println("A idade não pode ser negativa!");
-                                        dividirTerminal();
+                                        Dividir.dividirTerminal();
                                     } else if (addAge > 120) {
                                         System.out.println("É pouco provável que exista alguém com essa idade!");
-                                        dividirTerminal();
+                                        Dividir.dividirTerminal();
                                     } else {
                                         idades.add(addAge);
                                         System.out.println("Idade adicionada!");
-                                        dividirTerminal();
+                                        Dividir.dividirTerminal();
                                     }
                                 }
                                 System.out.println("Lista atualizada!");
-                                dividirTerminal();
+                                Dividir.dividirTerminal();
                                 goCase2 = false;
                                 break;
                             case 2:
@@ -100,10 +96,10 @@ public class Main {
                                     }
                                     System.out.print("Continuar adicionando? [S/N]: ");
                                     continueCase2Option2 = scan.next().toUpperCase();
-                                    dividirTerminal();
+                                    Dividir.dividirTerminal();
                                 } while (continueCase2Option2.equals("S"));
                                 System.out.println("Idades adicionadas!");
-                                dividirTerminal();
+                                Dividir.dividirTerminal();
                                 goCase2 = false;
                                 break;
                         }
@@ -112,7 +108,7 @@ public class Main {
                 case 3:
                     if (idades.isEmpty()) {
                         System.out.println("A lista já está vazia!");
-                        dividirTerminal();
+                        Dividir.dividirTerminal();
                         break;
                     }
 
@@ -124,7 +120,7 @@ public class Main {
                     System.out.println("5. Remover todas as idades");
                     System.out.print("Resposta: ");
                     byte choiceCase3 = scan.nextByte();
-                    dividirTerminal();
+                    Dividir.dividirTerminal();
                     switch (choiceCase3) {
                         case 0:
                             break;
@@ -163,19 +159,19 @@ public class Main {
                                 System.out.println(msgCase3Option4);
                                 System.out.print("Continuar removendo? [S/N]: ");
                                 continueCase3 = scan.next().toUpperCase();
-                                dividirTerminal();
+                                Dividir.dividirTerminal();
                             } while (continueCase3.equals("S"));
                             break;
                         case 5:
                             System.out.println("Não é possível a recuperação das idades após o confirmamento dessa ação.");
                             System.out.print("Tem certeza dessa ação? [S/N]: ");
                             String respCase5 = scan.next().toUpperCase();
-                            dividirTerminal();
+                            Dividir.dividirTerminal();
 
                             if (respCase5.equals("S")) {
                                 idades.clear();
                                 System.out.println("Lista limpa!");
-                                dividirTerminal();
+                                Dividir.dividirTerminal();
                             }
                             break;
                         default:
@@ -185,7 +181,7 @@ public class Main {
                 case 4:
                     if (idades.size() <= 1) {
                         System.out.println("Não é possível ordenar a lista com 1 elemento ou menos!");
-                        dividirTerminal();
+                        Dividir.dividirTerminal();
                         break;
                     }
                     boolean goCase4 = true;
@@ -196,7 +192,7 @@ public class Main {
                         System.out.println("2. Decrescente");
                         System.out.print("Resposta: ");
                         byte choiceCase4 = scan.nextByte();
-                        dividirTerminal();
+                        Dividir.dividirTerminal();
                         switch (choiceCase4) {
                             case 0:
                                 goCase4 = false;
@@ -204,13 +200,13 @@ public class Main {
                             case 1:
                                 Collections.sort(idades);
                                 System.out.println("Lista ordenada!");
-                                dividirTerminal();
+                                Dividir.dividirTerminal();
                                 goCase4 = false;
                                 break;
                             case 2:
                                 idades.sort(Collections.reverseOrder());
                                 System.out.println("Lista ordenada!");
-                                dividirTerminal();
+                                Dividir.dividirTerminal();
                                 goCase4 = false;
                                 break;
                             default:
@@ -229,7 +225,7 @@ public class Main {
                         System.out.println("4. Ver quantidade de menores de idade/adultos/idosos");
                         System.out.print("Resposta: ");
                         byte choiceCase5 = scan.nextByte();
-                        dividirTerminal();
+                        Dividir.dividirTerminal();
                         switch (choiceCase5) {
                             case 0:
                                 goCase5 = false;
@@ -238,7 +234,7 @@ public class Main {
                                 if (idades.size() <= 1) {
                                     System.out.println("Não é possível realizar essa ação " +
                                             "com a lista tendo 1 elemento ou menos!");
-                                    dividirTerminal();
+                                    Dividir.dividirTerminal();
                                     continue;
                                 }
                                 short somaCase5Option1 = 0;
@@ -247,14 +243,14 @@ public class Main {
                                 }
 
                                 System.out.println("A soma de todas as idades é: " + somaCase5Option1);
-                                dividirTerminal();
+                                Dividir.dividirTerminal();
                                 goCase5 = false;
                                 break;
                             case 2:
                                 if (idades.size() <= 1) {
                                     System.out.println("Não é possível realizar essa ação " +
                                             "com a lista tendo 1 elemento ou menos!");
-                                    dividirTerminal();
+                                    Dividir.dividirTerminal();
                                     continue;
                                 }
                                 short somaCase5Option2 = 0;
@@ -278,14 +274,14 @@ public class Main {
                                     mediana = toCalcMediana.get(t / 2);
                                 }
                                 System.out.printf("A mediana das idades é %.2f!\n", mediana);
-                                dividirTerminal();
+                                Dividir.dividirTerminal();
                                 toCalcMediana.clear();
                                 goCase5 = false;
                                 break;
                             case 3:
                                 if (idades.isEmpty()) {
                                     System.out.println("Não é possível realizar essa ação se a lista está vazia!");
-                                    dividirTerminal();
+                                    Dividir.dividirTerminal();
                                     continue;
                                 }
                                 ArrayList<Byte> pares = new ArrayList<>();
@@ -312,7 +308,7 @@ public class Main {
                                     System.out.println("Ímpares: " + impares.size() + ", e são eles: " + impares);
                                 }
 
-                                dividirTerminal();
+                                Dividir.dividirTerminal();
                                 pares.clear();
                                 impares.clear();
                                 goCase5 = false;
@@ -320,7 +316,7 @@ public class Main {
                             case 4:
                                 if (idades.isEmpty()) {
                                     System.out.println("Não é possível realizar essa ação se a lista está vazia!");
-                                    dividirTerminal();
+                                    Dividir.dividirTerminal();
                                     continue;
                                 }
                                 ArrayList<Byte> menoresIdade = new ArrayList<>();
@@ -364,7 +360,7 @@ public class Main {
                                             ", e são eles: " + idososIdade);
                                 }
 
-                                dividirTerminal();
+                                Dividir.dividirTerminal();
 
                                 menoresIdade.clear();
                                 adultosIdade.clear();
@@ -373,7 +369,7 @@ public class Main {
                                 break;
                             default:
                                 System.out.println("Selecione uma opção válida!");
-                                dividirTerminal();
+                                Dividir.dividirTerminal();
                                 goCase5 = false;
                                 break;
                         }
@@ -381,7 +377,7 @@ public class Main {
                     break;
                 default:
                     System.out.println("Selecione uma opção válida!");
-                    dividirTerminal();
+                    Dividir.dividirTerminal();
                     break;
             }
         } while (go);
