@@ -120,6 +120,7 @@ public class Main {
                     if (idadeEditada == 0) {
                         break;
                     }
+
                     boolean idadeEncontrada = idades.contains(idadeEditada);
 
                     if (idadeEncontrada) {
@@ -128,6 +129,16 @@ public class Main {
                         System.out.println("Índice: [" + indexEditada + "]");
                         System.out.print("Nova idade: ");
                         idadeEditada = scan.nextShort();
+                        Dividir.dividirTerminal();
+                        if (idadeEditada < 0) {
+                            System.out.println("A idade não pode ser negativa!");
+                            Dividir.dividirTerminal();
+                            break;
+                        } else if (idadeEditada > 120) {
+                            System.out.println("É pouco provável que exista alguém com essa idade!");
+                            Dividir.dividirTerminal();
+                            break;
+                        }
                         Dividir.dividirTerminal();
                         idades.set(indexEditada, idadeEditada);
                         System.out.println("Idade editada!");
