@@ -31,7 +31,7 @@ public class Main {
             System.out.println("3. Editar idade");
             System.out.println("4. Remover idade");
             System.out.println("5. Ordenar lista");
-            System.out.println("6. Informações da lista");
+            System.out.println("6. Mais opções da lista");
             System.out.print("Resposta: ");
             byte choice = scan.nextByte();
             Dividir.dividirTerminal();
@@ -97,6 +97,7 @@ public class Main {
                                         continue;
                                     } else {
                                         idades.add(addAge);
+                                        idadesAdicionadas.add(addAge);
                                     }
                                     System.out.print("Continuar adicionando? [S/N]: ");
                                     continueCase2Option2 = scan.next().toUpperCase();
@@ -145,7 +146,6 @@ public class Main {
                             break;
                         }
 
-                        Dividir.dividirTerminal();
                         idades.set(indexEditada, idadeEditada);
                         System.out.println("Idade editada!");
                         Dividir.dividirTerminal();
@@ -274,6 +274,7 @@ public class Main {
                         System.out.println("2. Ver a média e mediana das idades");
                         System.out.println("3. Ver idades pares e ímpares");
                         System.out.println("4. Ver quantidade de menores de idade/adultos/idosos");
+                        System.out.println("5. Ver alterações na lista");
                         System.out.print("Resposta: ");
                         byte choiceCase5 = scan.nextByte();
                         Dividir.dividirTerminal();
@@ -418,6 +419,21 @@ public class Main {
                                 idososIdade.clear();
                                 goCase5 = false;
                                 break;
+                            case 5:
+                                boolean isEnableToBeHere = idadesAdicionadas.isEmpty() && idadesForamEditadas.isEmpty();
+                                if (isEnableToBeHere) {
+                                    System.out.println("Não houve alterações na lista!");
+                                    Dividir.dividirTerminal();
+                                    break;
+                                }
+
+                                System.out.println("Quantidades de idades adicionadas: " + idadesAdicionadas.size());
+                                System.out.println("Idades adicionadas: " + idadesAdicionadas);
+                                System.out.println("Quantidades de idades editadas: " + idadesForamEditadas.size());
+                                System.out.println("Idades editadas: " + idadesForamEditadas);
+                                Dividir.dividirTerminal();
+                                goCase5 = false;
+                                break;
                             default:
                                 System.out.println("Selecione uma opção válida!");
                                 Dividir.dividirTerminal();
@@ -425,21 +441,6 @@ public class Main {
                                 break;
                         }
                     }
-                    break;
-                case 127:
-                    boolean isEnableToBeHere = idadesAdicionadas.isEmpty() && idadesForamEditadas.isEmpty();
-                    if (isEnableToBeHere) {
-                        System.out.println("Selecione uma opção válida!");
-                        Dividir.dividirTerminal();
-                        break;
-                    }
-                    scan.close();
-                    idades.clear();
-                    System.out.println("Quantidades de idades adicionadas: " + idadesAdicionadas.size());
-                    System.out.println("Idades adicionadas: " + idadesAdicionadas);
-                    System.out.println("Quantidades de idades editadas: " + idadesAdicionadas.size());
-                    System.out.println("Idades editadas: " + idadesAdicionadas);
-                    go = false;
                     break;
                 default:
                     System.out.println("Selecione uma opção válida!");
