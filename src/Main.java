@@ -5,6 +5,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         boolean go = true;
+        String msgInvalidOption = "Selecione uma opção válida!";
         ArrayList<Short> idades = new ArrayList<>();
         ArrayList<Short> idadesAdicionadas = new ArrayList<>();
         ArrayList<Short> idadesForamEditadas = new ArrayList<>();
@@ -100,6 +101,9 @@ public class Main {
                             System.out.println("Idades adicionadas!");
                             Dividir.dividirTerminal();
                             break;
+                        default:
+                            System.out.println(msgInvalidOption);
+                            Dividir.dividirTerminal();
                     }
                     break;
                 case 3:
@@ -219,7 +223,8 @@ public class Main {
                             }
                             break;
                         default:
-                            System.out.println("Selecione uma opção válida!");
+                            System.out.println(msgInvalidOption);
+                            Dividir.dividirTerminal();
                     }
                     break;
                 case 5:
@@ -249,7 +254,8 @@ public class Main {
                             Dividir.dividirTerminal();
                             break;
                         default:
-                            System.out.println("Selecione uma opção válida!");
+                            System.out.println(msgInvalidOption);
+                            Dividir.dividirTerminal();
                         }
                     break;
                 case 6:
@@ -413,15 +419,13 @@ public class Main {
                             Dividir.dividirTerminal();
                             break;
                         default:
-                            System.out.println("Selecione uma opção válida!");
+                            System.out.println(msgInvalidOption);
                             Dividir.dividirTerminal();
-                            break;
                     }
                     break;
                 default:
-                    System.out.println("Selecione uma opção válida!");
+                    System.out.println(msgInvalidOption);
                     Dividir.dividirTerminal();
-                    break;
             }
         } while (go);
     }
