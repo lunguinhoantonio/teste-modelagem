@@ -9,6 +9,8 @@ public class Main {
         String continueCase3;
         short addAge;
         ArrayList<Short> idades = new ArrayList<>();
+        ArrayList<Short> idadesAdicionadas = new ArrayList<>();
+        ArrayList<Short> idadesForamEditadas = new ArrayList<>();
         // Criando números aleatórios entre 1 e 80 até que o tamanho do array seja de 100
         while (idades.size() < 100) {
             short randomNum = (short) (1 + (Math.random() * 80));
@@ -74,6 +76,7 @@ public class Main {
                                         Dividir.dividirTerminal();
                                     } else {
                                         idades.add(addAge);
+                                        idadesAdicionadas.add(addAge);
                                         System.out.println("Idade adicionada!");
                                         Dividir.dividirTerminal();
                                     }
@@ -125,11 +128,13 @@ public class Main {
 
                     if (idadeEncontrada) {
                         int indexEditada = idades.indexOf(idadeEditada);
+                        idadesForamEditadas.add(idadeEditada);
                         System.out.println("Idade selecionada: [" + idadeEditada + "]");
                         System.out.println("Índice: [" + indexEditada + "]");
                         System.out.print("Nova idade: ");
                         idadeEditada = scan.nextShort();
                         Dividir.dividirTerminal();
+
                         if (idadeEditada < 0) {
                             System.out.println("A idade não pode ser negativa!");
                             Dividir.dividirTerminal();
@@ -139,6 +144,7 @@ public class Main {
                             Dividir.dividirTerminal();
                             break;
                         }
+
                         Dividir.dividirTerminal();
                         idades.set(indexEditada, idadeEditada);
                         System.out.println("Idade editada!");
@@ -419,6 +425,21 @@ public class Main {
                                 break;
                         }
                     }
+                    break;
+                case 127:
+                    boolean isEnableToBeHere = idadesAdicionadas.isEmpty() && idadesForamEditadas.isEmpty();
+                    if (isEnableToBeHere) {
+                        System.out.println("Selecione uma opção válida!");
+                        Dividir.dividirTerminal();
+                        break;
+                    }
+                    scan.close();
+                    idades.clear();
+                    System.out.println("Quantidades de idades adicionadas: " + idadesAdicionadas.size());
+                    System.out.println("Idades adicionadas: " + idadesAdicionadas);
+                    System.out.println("Quantidades de idades editadas: " + idadesAdicionadas.size());
+                    System.out.println("Idades editadas: " + idadesAdicionadas);
+                    go = false;
                     break;
                 default:
                     System.out.println("Selecione uma opção válida!");
