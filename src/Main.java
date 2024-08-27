@@ -5,9 +5,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         boolean go = true;
-        String continueCase2Option2 = "";
-        String continueCase3;
-        short addAge;
         ArrayList<Short> idades = new ArrayList<>();
         ArrayList<Short> idadesAdicionadas = new ArrayList<>();
         ArrayList<Short> idadesForamEditadas = new ArrayList<>();
@@ -49,64 +46,65 @@ public class Main {
                     Dividir.dividirTerminal();
                     break;
                 case 2:
-                    short quantIdades;
-                        System.out.println("0. Voltar");
-                        System.out.println("1. Adicionar quantidades predefinidas");
-                        System.out.println("2. Adicionar quantos quiser");
-                        System.out.print("Resposta: ");
-                        byte choiceCase2 = scan.nextByte();
-                        Dividir.dividirTerminal();
-                        switch (choiceCase2) {
-                            case 0:
-                                break;
-                            case 1:
-                                System.out.print("Quantas idades deseja adicionar? ");
-                                quantIdades = scan.nextShort();
-                                for (int c = 0; c < quantIdades; c++) {
-                                    System.out.print("Adicionar idade: ");
-                                    addAge = scan.nextShort();
-                                    if (addAge < 0) {
-                                        System.out.println("A idade não pode ser negativa!");
-                                        Dividir.dividirTerminal();
-                                    } else if (addAge > 120) {
-                                        System.out.println("É pouco provável que exista alguém com essa idade!");
-                                        Dividir.dividirTerminal();
-                                    } else {
-                                        idades.add(addAge);
-                                        idadesAdicionadas.add(addAge);
-                                        System.out.println("Idade adicionada!");
-                                        Dividir.dividirTerminal();
-                                    }
-                                }
-                                System.out.println("Lista atualizada!");
-                                Dividir.dividirTerminal();
-                                break;
-                            case 2:
-                                do {
-                                    System.out.print("Adicionar idade: ");
-                                    addAge = scan.nextShort();
-                                    if (addAge < 0) {
-                                        System.out.println("A idade não pode ser negativa!");
-                                        continue;
-                                    } else if (addAge > 120) {
-                                        System.out.println("É pouco provável que exista alguém com essa idade!");
-                                        continue;
-                                    } else {
-                                        idades.add(addAge);
-                                        idadesAdicionadas.add(addAge);
-                                    }
-                                    System.out.print("Continuar adicionando? [S/N]: ");
-                                    continueCase2Option2 = scan.next().toUpperCase();
+                    short addAge;
+                    System.out.println("0. Voltar");
+                    System.out.println("1. Adicionar quantidades predefinidas");
+                    System.out.println("2. Adicionar quantos quiser");
+                    System.out.print("Resposta: ");
+                    byte choiceCase2 = scan.nextByte();
+                    Dividir.dividirTerminal();
+                    switch (choiceCase2) {
+                        case 0:
+                            break;
+                        case 1:
+                            System.out.print("Quantas idades deseja adicionar? ");
+                            short quantIdades = scan.nextShort();
+                            for (int c = 0; c < quantIdades; c++) {
+                                System.out.print("Adicionar idade: ");
+                                addAge = scan.nextShort();
+                                if (addAge < 0) {
+                                    System.out.println("A idade não pode ser negativa!");
                                     Dividir.dividirTerminal();
-                                } while (continueCase2Option2.equals("S"));
-                                System.out.println("Idades adicionadas!");
+                                } else if (addAge > 120) {
+                                    System.out.println("É pouco provável que exista alguém com essa idade!");
+                                    Dividir.dividirTerminal();
+                                } else {
+                                    idades.add(addAge);
+                                    idadesAdicionadas.add(addAge);
+                                    System.out.println("Idade adicionada!");
+                                    Dividir.dividirTerminal();
+                                }
+                            }
+                            System.out.println("Lista atualizada!");
+                            Dividir.dividirTerminal();
+                            break;
+                        case 2:
+                            String continueCase2Option2 = "";
+                            do {
+                                System.out.print("Adicionar idade: ");
+                                addAge = scan.nextShort();
+                                if (addAge < 0) {
+                                    System.out.println("A idade não pode ser negativa!");
+                                    continue;
+                                } else if (addAge > 120) {
+                                    System.out.println("É pouco provável que exista alguém com essa idade!");
+                                    continue;
+                                } else {
+                                    idades.add(addAge);
+                                    idadesAdicionadas.add(addAge);
+                                }
+                                System.out.print("Continuar adicionando? [S/N]: ");
+                                continueCase2Option2 = scan.next().toUpperCase();
                                 Dividir.dividirTerminal();
-                                break;
-                        }
+                            } while (continueCase2Option2.equals("S"));
+                            System.out.println("Idades adicionadas!");
+                            Dividir.dividirTerminal();
+                            break;
+                    }
                     break;
                 case 3:
                     if (idades.isEmpty()) {
-                        System.out.println("Não é possível editar a lista porque ela já está vazia!");
+                        System.out.println("Não é possível editar a lista porque ela está vazia!");
                         Dividir.dividirTerminal();
                         break;
                     }
@@ -164,9 +162,9 @@ public class Main {
                     System.out.println("4. Personalizar remoções");
                     System.out.println("5. Remover todas as idades");
                     System.out.print("Resposta: ");
-                    byte choiceCase3 = scan.nextByte();
+                    byte choiceCase4 = scan.nextByte();
                     Dividir.dividirTerminal();
-                    switch (choiceCase3) {
+                    switch (choiceCase4) {
                         case 0:
                             break;
                         case 1:
@@ -195,6 +193,7 @@ public class Main {
                             System.out.println(msgCase3Option3);
                             break;
                         case 4:
+                            String continueCase4;
                             do {
                                 System.out.print("Remover idade: ");
                                 short rmvAge = scan.nextShort();
@@ -203,9 +202,9 @@ public class Main {
                                         ? "Idade removida!" : "Idade não encontrada!";
                                 System.out.println(msgCase3Option4);
                                 System.out.print("Continuar removendo? [S/N]: ");
-                                continueCase3 = scan.next().toUpperCase();
+                                continueCase4 = scan.next().toUpperCase();
                                 Dividir.dividirTerminal();
-                            } while (continueCase3.equals("S"));
+                            } while (continueCase4.equals("S"));
                             break;
                         case 5:
                             System.out.println("Não é possível a recuperação das idades após o confirmamento dessa ação.");
@@ -229,211 +228,194 @@ public class Main {
                         Dividir.dividirTerminal();
                         break;
                     }
-                    boolean goCase4 = true;
-                    while (goCase4) {
-                        System.out.println("Ordenar em ordem: ");
-                        System.out.println("0. Voltar");
-                        System.out.println("1. Crescente");
-                        System.out.println("2. Decrescente");
-                        System.out.print("Resposta: ");
-                        byte choiceCase4 = scan.nextByte();
-                        Dividir.dividirTerminal();
-                        switch (choiceCase4) {
-                            case 0:
-                                goCase4 = false;
-                                break;
-                            case 1:
-                                Collections.sort(idades);
-                                System.out.println("Lista ordenada!");
-                                Dividir.dividirTerminal();
-                                goCase4 = false;
-                                break;
-                            case 2:
-                                idades.sort(Collections.reverseOrder());
-                                System.out.println("Lista ordenada!");
-                                Dividir.dividirTerminal();
-                                goCase4 = false;
-                                break;
-                            default:
-                                System.out.println("Selecione uma opção válida!");
-                                goCase4 = false;
+                    System.out.println("Ordenar em ordem: ");
+                    System.out.println("0. Voltar");
+                    System.out.println("1. Crescente");
+                    System.out.println("2. Decrescente");
+                    System.out.print("Resposta: ");
+                    byte choiceCase5 = scan.nextByte();
+                    Dividir.dividirTerminal();
+                    switch (choiceCase5) {
+                        case 0:
+                            break;
+                        case 1:
+                            Collections.sort(idades);
+                            System.out.println("Lista ordenada!");
+                            Dividir.dividirTerminal();
+                            break;
+                        case 2:
+                            idades.sort(Collections.reverseOrder());
+                            System.out.println("Lista ordenada!");
+                            Dividir.dividirTerminal();
+                            break;
+                        default:
+                            System.out.println("Selecione uma opção válida!");
                         }
-                    }
                     break;
                 case 6:
-                    boolean goCase5 = true;
-                    while (goCase5) {
-                        System.out.println("0. Voltar");
-                        System.out.println("1. Ver a soma de todas as idades");
-                        System.out.println("2. Ver a média e mediana das idades");
-                        System.out.println("3. Ver idades pares e ímpares");
-                        System.out.println("4. Ver quantidade de menores de idade/adultos/idosos");
-                        System.out.println("5. Ver alterações na lista");
-                        System.out.print("Resposta: ");
-                        byte choiceCase5 = scan.nextByte();
-                        Dividir.dividirTerminal();
-                        switch (choiceCase5) {
-                            case 0:
-                                goCase5 = false;
-                                break;
-                            case 1:
-                                if (idades.size() <= 1) {
-                                    System.out.println("Não é possível realizar essa ação " +
-                                            "com a lista tendo 1 elemento ou menos!");
-                                    Dividir.dividirTerminal();
-                                    continue;
-                                }
-                                short somaCase5Option1 = 0;
-                                for (short numbers : idades) {
-                                    somaCase5Option1 += numbers;
-                                }
-
-                                System.out.println("A soma de todas as idades é: " + somaCase5Option1);
+                    System.out.println("0. Voltar");
+                    System.out.println("1. Ver a soma de todas as idades");
+                    System.out.println("2. Ver a média e mediana das idades");
+                    System.out.println("3. Ver idades pares e ímpares");
+                    System.out.println("4. Ver quantidade de menores de idade/adultos/idosos");
+                    System.out.println("5. Ver alterações na lista");
+                    System.out.print("Resposta: ");
+                    byte choiceCase6 = scan.nextByte();
+                    Dividir.dividirTerminal();
+                    switch (choiceCase6) {
+                        case 0:
+                            break;
+                        case 1:
+                            if (idades.size() <= 1) {
+                                System.out.println("Não é possível realizar essa ação " +
+                                        "com a lista tendo 1 elemento ou menos!");
                                 Dividir.dividirTerminal();
-                                goCase5 = false;
-                                break;
-                            case 2:
-                                if (idades.size() <= 1) {
-                                    System.out.println("Não é possível realizar essa ação " +
-                                            "com a lista tendo 1 elemento ou menos!");
-                                    Dividir.dividirTerminal();
-                                    continue;
-                                }
-                                short somaCase5Option2 = 0;
-                                double mediaArith;
-                                for (int num : idades) {
-                                    somaCase5Option2 += (short) num;
-                                }
+                                continue;
+                            }
+                            short somaCase5Option1 = 0;
+                            for (short numbers : idades) {
+                                somaCase5Option1 += numbers;
+                            }
 
-                                mediaArith = (double) somaCase5Option2 / idades.size();
-                                System.out.println("A média aritmética de todas as idades é " + mediaArith);
-
-                                // Fazendo a clonagem dos elementos do ArrayList idades para toCalcMediana
-                                ArrayList<Short> toCalcMediana = new ArrayList<>(idades);
-                                float mediana;
-                                short t = (short) toCalcMediana.size();
-                                Collections.sort(toCalcMediana);
-                                if (t % 2 == 0) {
-                                    mediana = (float) ((toCalcMediana.get(t / 2 - 1)
-                                            + toCalcMediana.get(t / 2)) / 2.0);
-                                } else {
-                                    mediana = toCalcMediana.get(t / 2);
-                                }
-                                System.out.printf("A mediana das idades é %.2f!\n", mediana);
+                            System.out.println("A soma de todas as idades é: " + somaCase5Option1);
+                            Dividir.dividirTerminal();
+                            break;
+                        case 2:
+                            if (idades.size() <= 1) {
+                                System.out.println("Não é possível realizar essa ação " +
+                                        "com a lista tendo 1 elemento ou menos!");
                                 Dividir.dividirTerminal();
-                                toCalcMediana.clear();
-                                goCase5 = false;
-                                break;
-                            case 3:
-                                if (idades.isEmpty()) {
-                                    System.out.println("Não é possível realizar essa ação se a lista está vazia!");
-                                    Dividir.dividirTerminal();
-                                    continue;
-                                }
-                                ArrayList<Byte> pares = new ArrayList<>();
-                                ArrayList<Byte> impares = new ArrayList<>();
+                                continue;
+                            }
+                            short somaCase5Option2 = 0;
+                            double mediaArith;
+                            for (int num : idades) {
+                                somaCase5Option2 += (short) num;
+                            }
 
-                                for (int num : idades) {
-                                    if (num % 2 == 0) {
-                                        pares.add((byte) num);
-                                    } else {
-                                        impares.add((byte) num);
-                                    }
-                                }
-                                if (pares.isEmpty()) {
-                                    System.out.println("Não existem números pares!");
-                                } else {
-                                    Collections.sort(pares);
-                                    System.out.println("Pares: " + pares.size() + ", e são eles: " + pares);
-                                }
+                            mediaArith = (double) somaCase5Option2 / idades.size();
+                            System.out.println("A média aritmética de todas as idades é " + mediaArith);
 
-                                if (impares.isEmpty()) {
-                                    System.out.println("Não existem números ímpares!");
-                                } else {
-                                    Collections.sort(impares);
-                                    System.out.println("Ímpares: " + impares.size() + ", e são eles: " + impares);
-                                }
-
+                            // Fazendo a clonagem dos elementos do ArrayList idades para toCalcMediana
+                            ArrayList<Short> toCalcMediana = new ArrayList<>(idades);
+                            float mediana;
+                            short t = (short) toCalcMediana.size();
+                            Collections.sort(toCalcMediana);
+                            if (t % 2 == 0) {
+                                mediana = (float) ((toCalcMediana.get(t / 2 - 1)
+                                        + toCalcMediana.get(t / 2)) / 2.0);
+                            } else {
+                                mediana = toCalcMediana.get(t / 2);
+                            }
+                            System.out.printf("A mediana das idades é %.2f!\n", mediana);
+                            Dividir.dividirTerminal();
+                            toCalcMediana.clear();
+                            break;
+                        case 3:
+                            if (idades.isEmpty()) {
+                                System.out.println("Não é possível realizar essa ação se a lista está vazia!");
                                 Dividir.dividirTerminal();
-                                pares.clear();
-                                impares.clear();
-                                goCase5 = false;
-                                break;
-                            case 4:
-                                if (idades.isEmpty()) {
-                                    System.out.println("Não é possível realizar essa ação se a lista está vazia!");
-                                    Dividir.dividirTerminal();
-                                    continue;
-                                }
-                                ArrayList<Byte> menoresIdade = new ArrayList<>();
-                                ArrayList<Byte> adultosIdade = new ArrayList<>();
-                                ArrayList<Byte> idososIdade = new ArrayList<>();
+                                continue;
+                            }
+                            ArrayList<Byte> pares = new ArrayList<>();
+                            ArrayList<Byte> impares = new ArrayList<>();
 
-                                for (int num : idades) {
-                                    if (num < 18) {
-                                        menoresIdade.add((byte) num);
-                                    } else if (num < 60) {
-                                        adultosIdade.add((byte) num);
-                                    } else {
-                                        idososIdade.add((byte) num);
-                                    }
-                                }
-
-                                if (menoresIdade.isEmpty()) {
-                                    System.out.println("Não tem menores de idade!");
+                            for (int num : idades) {
+                                if (num % 2 == 0) {
+                                    pares.add((byte) num);
                                 } else {
-                                    Collections.sort(menoresIdade);
-                                    System.out.println("Menores de idade: " +
-                                            menoresIdade.size() +
-                                            ", e são eles: " + menoresIdade);
+                                    impares.add((byte) num);
                                 }
+                            }
+                            if (pares.isEmpty()) {
+                                System.out.println("Não existem números pares!");
+                            } else {
+                                Collections.sort(pares);
+                                System.out.println("Pares: " + pares.size() + ", e são eles: " + pares);
+                            }
 
-                                if (adultosIdade.isEmpty()) {
-                                    System.out.println("Não tem adultos!");
+                            if (impares.isEmpty()) {
+                                System.out.println("Não existem números ímpares!");
+                            } else {
+                                Collections.sort(impares);
+                                System.out.println("Ímpares: " + impares.size() + ", e são eles: " + impares);
+                            }
+
+                            Dividir.dividirTerminal();
+                            pares.clear();
+                            impares.clear();
+                            break;
+                        case 4:
+                            if (idades.isEmpty()) {
+                                System.out.println("Não é possível realizar essa ação se a lista está vazia!");
+                                Dividir.dividirTerminal();
+                                continue;
+                            }
+                            ArrayList<Byte> menoresIdade = new ArrayList<>();
+                            ArrayList<Byte> adultosIdade = new ArrayList<>();
+                            ArrayList<Byte> idososIdade = new ArrayList<>();
+
+                            for (int num : idades) {
+                                if (num < 18) {
+                                    menoresIdade.add((byte) num);
+                                } else if (num < 60) {
+                                    adultosIdade.add((byte) num);
                                 } else {
-                                    Collections.sort(adultosIdade);
-                                    System.out.println("Adultos: " +
-                                            adultosIdade.size() +
-                                            ", e são eles: " + adultosIdade);
+                                    idososIdade.add((byte) num);
                                 }
+                            }
 
-                                if (idososIdade.isEmpty()) {
-                                    System.out.println("Não tem idosos!");
-                                } else {
-                                    Collections.sort(idososIdade);
-                                    System.out.println("Idosos: " +
-                                            idososIdade.size() +
-                                            ", e são eles: " + idososIdade);
-                                }
+                            if (menoresIdade.isEmpty()) {
+                                System.out.println("Não tem menores de idade!");
+                            } else {
+                                Collections.sort(menoresIdade);
+                                System.out.println("Menores de idade: " +
+                                        menoresIdade.size() +
+                                        ", e são eles: " + menoresIdade);
+                            }
 
+                            if (adultosIdade.isEmpty()) {
+                                System.out.println("Não tem adultos!");
+                            } else {
+                                Collections.sort(adultosIdade);
+                                System.out.println("Adultos: " +
+                                        adultosIdade.size() +
+                                        ", e são eles: " + adultosIdade);
+                            }
+
+                            if (idososIdade.isEmpty()) {
+                                System.out.println("Não tem idosos!");
+                            } else {
+                                Collections.sort(idososIdade);
+                                System.out.println("Idosos: " +
+                                        idososIdade.size() +
+                                        ", e são eles: " + idososIdade);
+                            }
+
+                            Dividir.dividirTerminal();
+
+                            menoresIdade.clear();
+                            adultosIdade.clear();
+                            idososIdade.clear();
+                            break;
+                        case 5:
+                            boolean isEnableToBeHere = idadesAdicionadas.isEmpty() && idadesForamEditadas.isEmpty();
+                            if (isEnableToBeHere) {
+                                System.out.println("Não houve alterações na lista!");
                                 Dividir.dividirTerminal();
+                                break;
+                            }
 
-                                menoresIdade.clear();
-                                adultosIdade.clear();
-                                idososIdade.clear();
-                                goCase5 = false;
-                                break;
-                            case 5:
-                                boolean isEnableToBeHere = idadesAdicionadas.isEmpty() && idadesForamEditadas.isEmpty();
-                                if (isEnableToBeHere) {
-                                    System.out.println("Não houve alterações na lista!");
-                                    Dividir.dividirTerminal();
-                                    break;
-                                }
-
-                                System.out.println("Quantidades de idades adicionadas: " + idadesAdicionadas.size());
-                                System.out.println("Idades adicionadas: " + idadesAdicionadas);
-                                System.out.println("Quantidades de idades editadas: " + idadesForamEditadas.size());
-                                System.out.println("Idades editadas: " + idadesForamEditadas);
-                                Dividir.dividirTerminal();
-                                goCase5 = false;
-                                break;
-                            default:
-                                System.out.println("Selecione uma opção válida!");
-                                Dividir.dividirTerminal();
-                                goCase5 = false;
-                                break;
-                        }
+                            System.out.println("Quantidades de idades adicionadas: " + idadesAdicionadas.size());
+                            System.out.println("Idades adicionadas: " + idadesAdicionadas);
+                            System.out.println("Quantidades de idades editadas: " + idadesForamEditadas.size());
+                            System.out.println("Idades editadas: " + idadesForamEditadas);
+                            Dividir.dividirTerminal();
+                            break;
+                        default:
+                            System.out.println("Selecione uma opção válida!");
+                            Dividir.dividirTerminal();
+                            break;
                     }
                     break;
                 default:
