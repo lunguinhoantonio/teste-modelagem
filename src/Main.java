@@ -9,13 +9,17 @@ public class Main {
         ArrayList<Short> idades = new ArrayList<>();
         ArrayList<Short> idadesAdicionadas = new ArrayList<>();
         ArrayList<Short> idadesForamEditadas = new ArrayList<>();
+
         // Criando números aleatórios entre 1 e 80 até que o tamanho do array seja de 100
+
         while (idades.size() < 100) {
             short randomNum = (short) (1 + (Math.random() * 80));
             idades.add(randomNum);
         }
+
         /* Criando números aleatórios entre 1 e 110 até que o tamanho da array seja de 120, fiz
         separado para que a probabilidade de uma idade ser maior que 80 seja menor */
+
         while (idades.size() < 120) {
             short randomNum = (short) (1 + (Math.random() * 110));
             idades.add(randomNum);
@@ -25,11 +29,9 @@ public class Main {
             System.out.println("Lista de idades: " + idades);
             System.out.println("0. Fechar programa");
             System.out.println("1. Consultar quantidade de idades");
-            System.out.println("2. Adicionar idade");
-            System.out.println("3. Editar idade");
-            System.out.println("4. Remover idade");
-            System.out.println("5. Ordenar lista");
-            System.out.println("6. Mais opções da lista");
+            System.out.println("2. Manipular dados");
+            System.out.println("3. Ordenar lista");
+            System.out.println("4. Mais opções da lista");
             System.out.print("Resposta: ");
             byte choice = scan.nextByte();
             Dividir.dividirTerminal();
@@ -47,10 +49,10 @@ public class Main {
                     Dividir.dividirTerminal();
                     break;
                 case 2:
-                    short addAge;
                     System.out.println("0. Voltar");
-                    System.out.println("1. Adicionar quantidades predefinidas");
-                    System.out.println("2. Adicionar quantos quiser");
+                    System.out.println("1. Adicionar idade");
+                    System.out.println("2. Editar idade");
+                    System.out.println("3. Remover idade");
                     System.out.print("Resposta: ");
                     byte choiceCase2 = scan.nextByte();
                     Dividir.dividirTerminal();
@@ -58,176 +60,190 @@ public class Main {
                         case 0:
                             break;
                         case 1:
-                            System.out.print("Quantas idades deseja adicionar? ");
-                            short quantIdades = scan.nextShort();
-                            for (int c = 0; c < quantIdades; c++) {
-                                System.out.print("Adicionar idade: ");
-                                addAge = scan.nextShort();
-                                if (addAge < 0) {
-                                    System.out.println("A idade não pode ser negativa!");
+                            short addAge;
+                            System.out.println("0. Voltar");
+                            System.out.println("1. Adicionar quantidades predefinidas");
+                            System.out.println("2. Adicionar quantos quiser");
+                            System.out.print("Resposta: ");
+                            byte subChoice1 = scan.nextByte();
+                            Dividir.dividirTerminal();
+                            switch (subChoice1) {
+                                case 0:
+                                    break;
+                                case 1:
+                                    System.out.print("Quantas idades deseja adicionar? ");
+                                    short quantIdades = scan.nextShort();
+                                    for (int c = 0; c < quantIdades; c++) {
+                                        System.out.print("Adicionar idade: ");
+                                        addAge = scan.nextShort();
+                                        if (addAge < 0) {
+                                            System.out.println("A idade não pode ser negativa!");
+                                            Dividir.dividirTerminal();
+                                        } else if (addAge > 120) {
+                                            System.out.println("É pouco provável que exista alguém com essa idade!");
+                                            Dividir.dividirTerminal();
+                                        } else {
+                                            idades.add(addAge);
+                                            idadesAdicionadas.add(addAge);
+                                            System.out.println("Idade adicionada!");
+                                            Dividir.dividirTerminal();
+                                        }
+                                    }
+                                    System.out.println("Lista atualizada!");
                                     Dividir.dividirTerminal();
-                                } else if (addAge > 120) {
-                                    System.out.println("É pouco provável que exista alguém com essa idade!");
+                                    break;
+                                case 2:
+                                    String continueCase2Option2 = "";
+                                    do {
+                                        System.out.print("Adicionar idade: ");
+                                        addAge = scan.nextShort();
+                                        if (addAge < 0) {
+                                            System.out.println("A idade não pode ser negativa!");
+                                            continue;
+                                        } else if (addAge > 120) {
+                                            System.out.println("É pouco provável que exista alguém com essa idade!");
+                                            continue;
+                                        } else {
+                                            idades.add(addAge);
+                                            idadesAdicionadas.add(addAge);
+                                        }
+                                        System.out.print("Continuar adicionando? [S/N]: ");
+                                        continueCase2Option2 = scan.next().toUpperCase();
+                                        Dividir.dividirTerminal();
+                                    } while (continueCase2Option2.equals("S"));
+                                    System.out.println("Idades adicionadas!");
                                     Dividir.dividirTerminal();
-                                } else {
-                                    idades.add(addAge);
-                                    idadesAdicionadas.add(addAge);
-                                    System.out.println("Idade adicionada!");
+                                    break;
+                                default:
+                                    System.out.println(msgInvalidOption);
                                     Dividir.dividirTerminal();
-                                }
+                                    break;
                             }
-                            System.out.println("Lista atualizada!");
-                            Dividir.dividirTerminal();
                             break;
                         case 2:
-                            String continueCase2Option2 = "";
-                            do {
-                                System.out.print("Adicionar idade: ");
-                                addAge = scan.nextShort();
-                                if (addAge < 0) {
-                                    System.out.println("A idade não pode ser negativa!");
-                                    continue;
-                                } else if (addAge > 120) {
-                                    System.out.println("É pouco provável que exista alguém com essa idade!");
-                                    continue;
-                                } else {
-                                    idades.add(addAge);
-                                    idadesAdicionadas.add(addAge);
-                                }
-                                System.out.print("Continuar adicionando? [S/N]: ");
-                                continueCase2Option2 = scan.next().toUpperCase();
+                            if (idades.isEmpty()) {
+                                System.out.println("Não é possível editar a lista porque ela está vazia!");
                                 Dividir.dividirTerminal();
-                            } while (continueCase2Option2.equals("S"));
-                            System.out.println("Idades adicionadas!");
+                                break;
+                            }
+
+                            System.out.println("0. Cancelar");
+                            System.out.print("Selecionar idade: ");
+                            short idadeEditada = scan.nextShort();
                             Dividir.dividirTerminal();
-                            break;
-                        default:
-                            System.out.println(msgInvalidOption);
-                            Dividir.dividirTerminal();
-                    }
-                    break;
-                case 3:
-                    if (idades.isEmpty()) {
-                        System.out.println("Não é possível editar a lista porque ela está vazia!");
-                        Dividir.dividirTerminal();
-                        break;
-                    }
+                            if (idadeEditada == 0) {
+                                break;
+                            }
 
-                    System.out.println("0. Cancelar");
-                    System.out.print("Selecionar idade: ");
-                    short idadeEditada = scan.nextShort();
-                    Dividir.dividirTerminal();
-                    if (idadeEditada == 0) {
-                        break;
-                    }
+                            boolean idadeEncontrada = idades.contains(idadeEditada);
 
-                    boolean idadeEncontrada = idades.contains(idadeEditada);
+                            if (idadeEncontrada) {
+                                int indexEditada = idades.indexOf(idadeEditada);
+                                idadesForamEditadas.add(idadeEditada);
+                                System.out.println("Idade selecionada: [" + idadeEditada + "]");
+                                System.out.println("Índice: [" + indexEditada + "]");
+                                System.out.print("Nova idade: ");
+                                idadeEditada = scan.nextShort();
+                                Dividir.dividirTerminal();
 
-                    if (idadeEncontrada) {
-                        int indexEditada = idades.indexOf(idadeEditada);
-                        idadesForamEditadas.add(idadeEditada);
-                        System.out.println("Idade selecionada: [" + idadeEditada + "]");
-                        System.out.println("Índice: [" + indexEditada + "]");
-                        System.out.print("Nova idade: ");
-                        idadeEditada = scan.nextShort();
-                        Dividir.dividirTerminal();
+                                if (idadeEditada < 0) {
+                                    System.out.println("A idade não pode ser negativa!");
+                                    Dividir.dividirTerminal();
+                                    break;
+                                } else if (idadeEditada > 120) {
+                                    System.out.println("É pouco provável que exista alguém com essa idade!");
+                                    Dividir.dividirTerminal();
+                                    break;
+                                }
 
-                        if (idadeEditada < 0) {
-                            System.out.println("A idade não pode ser negativa!");
-                            Dividir.dividirTerminal();
-                            break;
-                        } else if (idadeEditada > 120) {
-                            System.out.println("É pouco provável que exista alguém com essa idade!");
-                            Dividir.dividirTerminal();
-                            break;
-                        }
-
-                        idades.set(indexEditada, idadeEditada);
-                        System.out.println("Idade editada!");
-                        Dividir.dividirTerminal();
-                    } else {
-                        System.out.println("Idade não encontrada!");
-                        Dividir.dividirTerminal();
-                        break;
-                    }
-
-                    break;
-                case 4:
-                    if (idades.isEmpty()) {
-                        System.out.println("A lista já está vazia!");
-                        Dividir.dividirTerminal();
-                        break;
-                    }
-
-                    System.out.println("0. Voltar");
-                    System.out.println("1. Remover todas abaixo de 18");
-                    System.out.println("2. Remover todas acima ou iguais a 18 e abaixo de 60");
-                    System.out.println("3. Remover todas acima ou iguais a 60");
-                    System.out.println("4. Personalizar remoções");
-                    System.out.println("5. Remover todas as idades");
-                    System.out.print("Resposta: ");
-                    byte choiceCase4 = scan.nextByte();
-                    Dividir.dividirTerminal();
-                    switch (choiceCase4) {
-                        case 0:
-                            break;
-                        case 1:
-                            /* Esse `num -> num < 18` é chamada de Lambda Expression, tem a mesma função que um forEach:
-                            * for (Integer num : idades) {
-                            *   if (num < 18) {
-                            *   idades.remove(num);
-                            *   }
-                            * }
-                            * */
-                            boolean removedOption1 = idades.removeIf(num -> num < 18);
-                            String msgCase3Option1 = (removedOption1)
-                                    ? "Idade(s) removida(s)!" : "Faixa de idade não encontradas!";
-                            System.out.println(msgCase3Option1);
-                            break;
-                        case 2:
-                            boolean removedOption2 = idades.removeIf(num -> num >= 18 && num < 60);
-                            String msgCase3Option2 = (removedOption2)
-                                    ? "Idades removidas!" : "Faixa de idade não encontradas!";
-                            System.out.println(msgCase3Option2);
+                                idades.set(indexEditada, idadeEditada);
+                                System.out.println("Idade editada!");
+                                Dividir.dividirTerminal();
+                            } else {
+                                System.out.println("Idade não encontrada!");
+                                Dividir.dividirTerminal();
+                                break;
+                            }
                             break;
                         case 3:
-                            boolean removedOption3 = idades.removeIf(num -> num >= 60);
-                            String msgCase3Option3 = (removedOption3)
-                                    ? "Idade(s) removida(s)!" : "Faixa de idade não encontradas!";
-                            System.out.println(msgCase3Option3);
-                            break;
-                        case 4:
-                            String continueCase4;
-                            do {
-                                System.out.print("Remover idade: ");
-                                short rmvAge = scan.nextShort();
-                                boolean removedOption4 = idades.remove(Short.valueOf(rmvAge));
-                                String msgCase3Option4 = (removedOption4)
-                                        ? "Idade removida!" : "Idade não encontrada!";
-                                System.out.println(msgCase3Option4);
-                                System.out.print("Continuar removendo? [S/N]: ");
-                                continueCase4 = scan.next().toUpperCase();
+                            if (idades.isEmpty()) {
+                                System.out.println("A lista já está vazia!");
                                 Dividir.dividirTerminal();
-                            } while (continueCase4.equals("S"));
-                            break;
-                        case 5:
-                            System.out.println("Não é possível a recuperação das idades após o confirmamento dessa ação.");
-                            System.out.print("Tem certeza dessa ação? [S/N]: ");
-                            String respCase5 = scan.next().toUpperCase();
-                            Dividir.dividirTerminal();
+                                break;
+                            }
 
-                            if (respCase5.equals("S")) {
-                                idades.clear();
-                                System.out.println("Lista limpa!");
-                                Dividir.dividirTerminal();
+                            System.out.println("0. Voltar");
+                            System.out.println("1. Remover todas abaixo de 18");
+                            System.out.println("2. Remover todas acima ou iguais a 18 e abaixo de 60");
+                            System.out.println("3. Remover todas acima ou iguais a 60");
+                            System.out.println("4. Personalizar remoções");
+                            System.out.println("5. Remover todas as idades");
+                            System.out.print("Resposta: ");
+                            byte subChoice3 = scan.nextByte();
+                            Dividir.dividirTerminal();
+                            switch (subChoice3) {
+                                case 0:
+                                    break;
+                                case 1:
+                                    /* Esse `num -> num < 18` é chamada de Lambda Expression, tem a mesma função que um forEach:
+                                     * for (Integer num : idades) {
+                                     *   if (num < 18) {
+                                     *   idades.remove(num);
+                                     *   }
+                                     * }
+                                     * */
+                                    boolean removedOption1 = idades.removeIf(num -> num < 18);
+                                    String msgCase3Option1 = (removedOption1)
+                                            ? "Idade(s) removida(s)!" : "Faixa de idade não encontradas!";
+                                    System.out.println(msgCase3Option1);
+                                    break;
+                                case 2:
+                                    boolean removedOption2 = idades.removeIf(num -> num >= 18 && num < 60);
+                                    String msgCase3Option2 = (removedOption2)
+                                            ? "Idades removidas!" : "Faixa de idade não encontradas!";
+                                    System.out.println(msgCase3Option2);
+                                    break;
+                                case 3:
+                                    boolean removedOption3 = idades.removeIf(num -> num >= 60);
+                                    String msgCase3Option3 = (removedOption3)
+                                            ? "Idade(s) removida(s)!" : "Faixa de idade não encontradas!";
+                                    System.out.println(msgCase3Option3);
+                                    break;
+                                case 4:
+                                    String continueCase4;
+                                    do {
+                                        System.out.print("Remover idade: ");
+                                        short rmvAge = scan.nextShort();
+                                        boolean removedOption4 = idades.remove(Short.valueOf(rmvAge));
+                                        String msgCase3Option4 = (removedOption4)
+                                                ? "Idade removida!" : "Idade não encontrada!";
+                                        System.out.println(msgCase3Option4);
+                                        System.out.print("Continuar removendo? [S/N]: ");
+                                        continueCase4 = scan.next().toUpperCase();
+                                        Dividir.dividirTerminal();
+                                    } while (continueCase4.equals("S"));
+                                    break;
+
+                                case 5:
+                                    System.out.println("Não é possível a recuperação das idades após o confirmamento dessa ação.");
+                                    System.out.print("Tem certeza dessa ação? [S/N]: ");
+                                    String respCase5 = scan.next().toUpperCase();
+                                    Dividir.dividirTerminal();
+
+                                    if (respCase5.equals("S")) {
+                                        idades.clear();
+                                        System.out.println("Lista limpa!");
+                                        Dividir.dividirTerminal();
+                                    }
+                                    break;
+                                default:
+                                    System.out.println(msgInvalidOption);
+                                    Dividir.dividirTerminal();
                             }
                             break;
-                        default:
-                            System.out.println(msgInvalidOption);
-                            Dividir.dividirTerminal();
-                    }
+                            }
                     break;
-                case 5:
+                case 3:
                     if (idades.size() <= 1) {
                         System.out.println("Não é possível ordenar a lista com 1 elemento ou menos!");
                         Dividir.dividirTerminal();
@@ -258,7 +274,7 @@ public class Main {
                             Dividir.dividirTerminal();
                         }
                     break;
-                case 6:
+                case 4:
                     System.out.println("0. Voltar");
                     System.out.println("1. Ver a soma de todas as idades");
                     System.out.println("2. Ver a média e mediana das idades");
