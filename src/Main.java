@@ -49,9 +49,7 @@ public class Main {
                     Dividir.dividirTerminal();
                     break;
                 case 2:
-                    boolean goCase2 = true;
                     short quantIdades;
-                    while (goCase2) {
                         System.out.println("0. Voltar");
                         System.out.println("1. Adicionar quantidades predefinidas");
                         System.out.println("2. Adicionar quantos quiser");
@@ -60,7 +58,6 @@ public class Main {
                         Dividir.dividirTerminal();
                         switch (choiceCase2) {
                             case 0:
-                                goCase2 = false;
                                 break;
                             case 1:
                                 System.out.print("Quantas idades deseja adicionar? ");
@@ -83,7 +80,6 @@ public class Main {
                                 }
                                 System.out.println("Lista atualizada!");
                                 Dividir.dividirTerminal();
-                                goCase2 = false;
                                 break;
                             case 2:
                                 do {
@@ -105,10 +101,8 @@ public class Main {
                                 } while (continueCase2Option2.equals("S"));
                                 System.out.println("Idades adicionadas!");
                                 Dividir.dividirTerminal();
-                                goCase2 = false;
                                 break;
                         }
-                    }
                     break;
                 case 3:
                     if (idades.isEmpty()) {
