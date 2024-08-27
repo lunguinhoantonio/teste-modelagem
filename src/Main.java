@@ -26,9 +26,10 @@ public class Main {
             System.out.println("0. Fechar programa");
             System.out.println("1. Consultar quantidade de idades");
             System.out.println("2. Adicionar idade");
-            System.out.println("3. Remover idade");
-            System.out.println("4. Ordenar lista");
-            System.out.println("5. Informações da lista");
+            System.out.println("3. Editar idade");
+            System.out.println("4. Remover idade");
+            System.out.println("5. Ordenar lista");
+            System.out.println("6. Informações da lista");
             System.out.print("Resposta: ");
             byte choice = scan.nextByte();
             Dividir.dividirTerminal();
@@ -107,6 +108,39 @@ public class Main {
                     break;
                 case 3:
                     if (idades.isEmpty()) {
+                        System.out.println("Não é possível editar a lista porque ela já está vazia!");
+                        Dividir.dividirTerminal();
+                        break;
+                    }
+
+                    System.out.println("0. Cancelar");
+                    System.out.print("Selecionar idade: ");
+                    short idadeEditada = scan.nextShort();
+                    Dividir.dividirTerminal();
+                    if (idadeEditada == 0) {
+                        break;
+                    }
+                    boolean idadeEncontrada = idades.contains(idadeEditada);
+
+                    if (idadeEncontrada) {
+                        int indexEditada = idades.indexOf(idadeEditada);
+                        System.out.println("Idade selecionada: [" + idadeEditada + "]");
+                        System.out.println("Índice: [" + indexEditada + "]");
+                        System.out.print("Nova idade: ");
+                        idadeEditada = scan.nextShort();
+                        Dividir.dividirTerminal();
+                        idades.set(indexEditada, idadeEditada);
+                        System.out.println("Idade editada!");
+                        Dividir.dividirTerminal();
+                    } else {
+                        System.out.println("Idade não encontrada!");
+                        Dividir.dividirTerminal();
+                        break;
+                    }
+
+                    break;
+                case 4:
+                    if (idades.isEmpty()) {
                         System.out.println("A lista já está vazia!");
                         Dividir.dividirTerminal();
                         break;
@@ -178,7 +212,7 @@ public class Main {
                             System.out.println("Selecione uma opção válida!");
                     }
                     break;
-                case 4:
+                case 5:
                     if (idades.size() <= 1) {
                         System.out.println("Não é possível ordenar a lista com 1 elemento ou menos!");
                         Dividir.dividirTerminal();
@@ -215,7 +249,7 @@ public class Main {
                         }
                     }
                     break;
-                case 5:
+                case 6:
                     boolean goCase5 = true;
                     while (goCase5) {
                         System.out.println("0. Voltar");
