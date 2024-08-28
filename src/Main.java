@@ -5,9 +5,10 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         boolean go = true;
-        String msgInvalidOption = "Selecione uma opção válida!";
+        String msgInvalidOpt = "Selecione uma opção válida!";
         ArrayList<Short> idades = new ArrayList<>();
         ArrayList<Short> idadesAdicionadas = new ArrayList<>();
+        ArrayList<Short> idadesRemovidas = new ArrayList<>();
         ArrayList<Short> idadesForamEditadas = new ArrayList<>();
 
         // Criando números aleatórios entre 1 e 80 até que o tamanho do array seja de 100
@@ -17,7 +18,7 @@ public class Main {
             idades.add(randomNum);
         }
 
-        /* Criando números aleatórios entre 1 e 110 até que o tamanho da array seja de 120, fiz
+        /* Criando números aleatórios entre 1 e 110 até que o tamanho da array seja de 120. Fiz
         separado para que a probabilidade de uma idade ser maior que 80 seja menor */
 
         while (idades.size() < 120) {
@@ -93,7 +94,7 @@ public class Main {
                                     Dividir.dividirTerminal();
                                     break;
                                 case 2:
-                                    String continueCase2Option2 = "";
+                                    String continueCase2Opt2 = "";
                                     do {
                                         System.out.print("Adicionar idade: ");
                                         addAge = scan.nextShort();
@@ -108,14 +109,14 @@ public class Main {
                                             idadesAdicionadas.add(addAge);
                                         }
                                         System.out.print("Continuar adicionando? [S/N]: ");
-                                        continueCase2Option2 = scan.next().toUpperCase();
+                                        continueCase2Opt2 = scan.next().toUpperCase();
                                         Dividir.dividirTerminal();
-                                    } while (continueCase2Option2.equals("S"));
+                                    } while (continueCase2Opt2.equals("S"));
                                     System.out.println("Idades adicionadas!");
                                     Dividir.dividirTerminal();
                                     break;
                                 default:
-                                    System.out.println(msgInvalidOption);
+                                    System.out.println(msgInvalidOpt);
                                     Dividir.dividirTerminal();
                             }
                             break;
@@ -184,39 +185,64 @@ public class Main {
                                 case 0:
                                     break;
                                 case 1:
-                                    /* Esse `num -> num < 18` é chamada de Lambda Expression, tem a mesma função que um forEach:
+                                    /* `num -> num < 18` é chamada de Lambda Expression, tem a mesma função que um forEach:
                                      * for (Integer num : idades) {
                                      *   if (num < 18) {
                                      *   idades.remove(num);
                                      *   }
                                      * }
                                      * */
-                                    boolean removedOption1 = idades.removeIf(num -> num < 18);
-                                    String msgCase3Option1 = (removedOption1)
-                                            ? "Idade(s) removida(s)!" : "Faixa de idade não encontradas!";
-                                    System.out.println(msgCase3Option1);
+                                    boolean feedbackCase3Opt1 = idades.removeIf(num -> {
+                                        if (num < 18) {
+                                            idadesRemovidas.add(num);
+                                            return true;
+                                        }
+                                        return false;
+                                    });
+                                    String msgCase3Opt1 = (feedbackCase3Opt1)
+                                            ? "Idade(s) removida(s)!" : "Faixa de idade não encontrada!";
+                                    System.out.println(msgCase3Opt1);
+                                    Dividir.dividirTerminal();
                                     break;
                                 case 2:
-                                    boolean removedOption2 = idades.removeIf(num -> num >= 18 && num < 60);
-                                    String msgCase3Option2 = (removedOption2)
-                                            ? "Idades removidas!" : "Faixa de idade não encontradas!";
-                                    System.out.println(msgCase3Option2);
+                                    boolean feedbackCase3Opt2 = idades.removeIf(num -> {
+                                        if (num >= 18 && num < 60) {
+                                            idadesRemovidas.add(num);
+                                            return true;
+                                        }
+                                        return false;
+                                    });
+                                    String msgCase3Opt2 = (feedbackCase3Opt2)
+                                            ? "Idades removidas!" : "Faixa de idade não encontrada!";
+                                    System.out.println(msgCase3Opt2);
+                                    Dividir.dividirTerminal();
                                     break;
                                 case 3:
-                                    boolean removedOption3 = idades.removeIf(num -> num >= 60);
-                                    String msgCase3Option3 = (removedOption3)
-                                            ? "Idade(s) removida(s)!" : "Faixa de idade não encontradas!";
-                                    System.out.println(msgCase3Option3);
+                                    boolean feedbackCase3Opt3 = idades.removeIf(num -> {
+                                        if (num >= 60) {
+                                            idadesRemovidas.add(num);
+                                            return true;
+                                        }
+                                        return false;
+                                    });
+                                    String msgCase3Opt3 = (feedbackCase3Opt3)
+                                            ? "Idade(s) removida(s)!" : "Faixa de idade não encontrada!";
+                                    System.out.println(msgCase3Opt3);
+                                    Dividir.dividirTerminal();
                                     break;
                                 case 4:
                                     String continueCase4;
                                     do {
                                         System.out.print("Remover idade: ");
                                         short rmvAge = scan.nextShort();
-                                        boolean removedOption4 = idades.remove(Short.valueOf(rmvAge));
-                                        String msgCase3Option4 = (removedOption4)
-                                                ? "Idade removida!" : "Idade não encontrada!";
-                                        System.out.println(msgCase3Option4);
+                                        boolean removedOpt4 = idades.remove(Short.valueOf(rmvAge));
+                                        if (removedOpt4) {
+                                            idadesRemovidas.add(rmvAge);
+                                            System.out.println("Idade removida!");
+                                        } else {
+                                            System.out.println("Idade não encontrada!");
+                                        }
+
                                         System.out.print("Continuar removendo? [S/N]: ");
                                         continueCase4 = scan.next().toUpperCase();
                                         Dividir.dividirTerminal();
@@ -230,13 +256,14 @@ public class Main {
                                     Dividir.dividirTerminal();
 
                                     if (respCase5.equals("S")) {
+                                        idadesRemovidas.addAll(idades);
                                         idades.clear();
                                         System.out.println("Lista limpa!");
                                         Dividir.dividirTerminal();
                                     }
                                     break;
                                 default:
-                                    System.out.println(msgInvalidOption);
+                                    System.out.println(msgInvalidOpt);
                                     Dividir.dividirTerminal();
                             }
                             break;
@@ -270,7 +297,7 @@ public class Main {
                             Dividir.dividirTerminal();
                             break;
                         default:
-                            System.out.println(msgInvalidOption);
+                            System.out.println(msgInvalidOpt);
                             Dividir.dividirTerminal();
                         }
                     break;
@@ -294,12 +321,12 @@ public class Main {
                                 Dividir.dividirTerminal();
                                 continue;
                             }
-                            short somaCase4Option1 = 0;
+                            short somaCase4Opt1 = 0;
                             for (short numbers : idades) {
-                                somaCase4Option1 += numbers;
+                                somaCase4Opt1 += numbers;
                             }
 
-                            System.out.println("A soma de todas as idades é: " + somaCase4Option1);
+                            System.out.println("A soma de todas as idades é: " + somaCase4Opt1);
                             Dividir.dividirTerminal();
                             break;
                         case 2:
@@ -309,14 +336,14 @@ public class Main {
                                 Dividir.dividirTerminal();
                                 continue;
                             }
-                            short somaCase4Option2 = 0;
-                            double mediaArith;
+                            short somaCase4Opt2 = 0;
+                            float mediaArith;
                             for (int num : idades) {
-                                somaCase4Option2 += (short) num;
+                                somaCase4Opt2 += (short) num;
                             }
 
-                            mediaArith = (double) somaCase4Option2 / idades.size();
-                            System.out.println("A média aritmética de todas as idades é " + mediaArith);
+                            mediaArith = (float) somaCase4Opt2 / idades.size();
+                            System.out.printf("A média aritmética de todas as idades é %.2f!", mediaArith);
 
                             // Fazendo a clonagem dos elementos do ArrayList idades para toCalcMediana
                             ArrayList<Short> toCalcMediana = new ArrayList<>(idades);
@@ -329,7 +356,7 @@ public class Main {
                             } else {
                                 mediana = toCalcMediana.get(t / 2);
                             }
-                            System.out.printf("A mediana das idades é %.2f!\n", mediana);
+                            System.out.printf("\nA mediana das idades é %.2f!\n", mediana);
                             Dividir.dividirTerminal();
                             toCalcMediana.clear();
                             break;
@@ -421,26 +448,32 @@ public class Main {
                             idososIdade.clear();
                             break;
                         case 5:
-                            boolean isEnableToBeHere = idadesAdicionadas.isEmpty() && idadesForamEditadas.isEmpty();
-                            if (isEnableToBeHere) {
-                                System.out.println("Não houve alterações na lista!");
+                            boolean isEnableToBeHere =
+                                    idadesAdicionadas.isEmpty() &&
+                                    idadesForamEditadas.isEmpty() &&
+                                    idadesRemovidas.isEmpty();
+
+                            if (!isEnableToBeHere) {
+                                System.out.println("Quantidades de idades adicionadas: " + idadesAdicionadas.size());
+                                System.out.println("Idades adicionadas: " + idadesAdicionadas);
+                                System.out.println("Quantidades de idades editadas: " + idadesForamEditadas.size());
+                                System.out.println("Idades editadas: " + idadesForamEditadas);
+                                System.out.println("Quantidades de idades removidas: " + idadesRemovidas.size());
+                                System.out.println("Idades removidas: " + idadesRemovidas);
                                 Dividir.dividirTerminal();
                                 break;
                             }
 
-                            System.out.println("Quantidades de idades adicionadas: " + idadesAdicionadas.size());
-                            System.out.println("Idades adicionadas: " + idadesAdicionadas);
-                            System.out.println("Quantidades de idades editadas: " + idadesForamEditadas.size());
-                            System.out.println("Idades editadas: " + idadesForamEditadas);
+                            System.out.println("Não houve alterações na lista!");
                             Dividir.dividirTerminal();
                             break;
                         default:
-                            System.out.println(msgInvalidOption);
+                            System.out.println(msgInvalidOpt);
                             Dividir.dividirTerminal();
                     }
                     break;
                 default:
-                    System.out.println(msgInvalidOption);
+                    System.out.println(msgInvalidOpt);
                     Dividir.dividirTerminal();
             }
         } while (go);
