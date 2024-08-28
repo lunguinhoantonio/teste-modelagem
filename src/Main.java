@@ -117,7 +117,6 @@ public class Main {
                                 default:
                                     System.out.println(msgInvalidOption);
                                     Dividir.dividirTerminal();
-                                    break;
                             }
                             break;
                         case 2:
@@ -241,7 +240,7 @@ public class Main {
                                     Dividir.dividirTerminal();
                             }
                             break;
-                            }
+                    }
                     break;
                 case 3:
                     if (idades.size() <= 1) {
@@ -249,6 +248,7 @@ public class Main {
                         Dividir.dividirTerminal();
                         break;
                     }
+
                     System.out.println("Ordenar em ordem: ");
                     System.out.println("0. Voltar");
                     System.out.println("1. Crescente");
@@ -282,9 +282,9 @@ public class Main {
                     System.out.println("4. Ver quantidade de menores de idade/adultos/idosos");
                     System.out.println("5. Ver alterações na lista");
                     System.out.print("Resposta: ");
-                    byte choiceCase6 = scan.nextByte();
+                    byte choiceCase4 = scan.nextByte();
                     Dividir.dividirTerminal();
-                    switch (choiceCase6) {
+                    switch (choiceCase4) {
                         case 0:
                             break;
                         case 1:
@@ -294,12 +294,12 @@ public class Main {
                                 Dividir.dividirTerminal();
                                 continue;
                             }
-                            short somaCase5Option1 = 0;
+                            short somaCase4Option1 = 0;
                             for (short numbers : idades) {
-                                somaCase5Option1 += numbers;
+                                somaCase4Option1 += numbers;
                             }
 
-                            System.out.println("A soma de todas as idades é: " + somaCase5Option1);
+                            System.out.println("A soma de todas as idades é: " + somaCase4Option1);
                             Dividir.dividirTerminal();
                             break;
                         case 2:
@@ -309,13 +309,13 @@ public class Main {
                                 Dividir.dividirTerminal();
                                 continue;
                             }
-                            short somaCase5Option2 = 0;
+                            short somaCase4Option2 = 0;
                             double mediaArith;
                             for (int num : idades) {
-                                somaCase5Option2 += (short) num;
+                                somaCase4Option2 += (short) num;
                             }
 
-                            mediaArith = (double) somaCase5Option2 / idades.size();
+                            mediaArith = (double) somaCase4Option2 / idades.size();
                             System.out.println("A média aritmética de todas as idades é " + mediaArith);
 
                             // Fazendo a clonagem dos elementos do ArrayList idades para toCalcMediana
