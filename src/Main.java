@@ -9,7 +9,7 @@ public class Main {
         ArrayList<Short> idades = new ArrayList<>();
         ArrayList<Short> idadesAdicionadas = new ArrayList<>();
         ArrayList<Short> idadesRemovidas = new ArrayList<>();
-        ArrayList<Short> idadesForamEditadas = new ArrayList<>();
+        ArrayList<Short> idadesEditadas = new ArrayList<>();
 
         // Criando números aleatórios entre 1 e 80 até que o tamanho do array seja de 100
 
@@ -129,34 +129,34 @@ public class Main {
 
                             System.out.println("0. Cancelar");
                             System.out.print("Selecionar idade: ");
-                            short idadeEditada = scan.nextShort();
+                            short editAge = scan.nextShort();
                             Dividir.dividirTerminal();
-                            if (idadeEditada == 0) {
+                            if (editAge == 0) {
                                 break;
                             }
 
-                            boolean idadeEncontrada = idades.contains(idadeEditada);
+                            boolean idadeEncontrada = idades.contains(editAge);
 
                             if (idadeEncontrada) {
-                                int indexEditada = idades.indexOf(idadeEditada);
-                                idadesForamEditadas.add(idadeEditada);
-                                System.out.println("Idade selecionada: [" + idadeEditada + "]");
+                                int indexEditada = idades.indexOf(editAge);
+                                idadesEditadas.add(editAge);
+                                System.out.println("Idade selecionada: [" + editAge + "]");
                                 System.out.println("Índice: [" + indexEditada + "]");
                                 System.out.print("Nova idade: ");
-                                idadeEditada = scan.nextShort();
+                                editAge = scan.nextShort();
                                 Dividir.dividirTerminal();
 
-                                if (idadeEditada < 0) {
+                                if (editAge < 0) {
                                     System.out.println("A idade não pode ser negativa!");
                                     Dividir.dividirTerminal();
                                     break;
-                                } else if (idadeEditada > 120) {
+                                } else if (editAge > 120) {
                                     System.out.println("É pouco provável que exista alguém com essa idade!");
                                     Dividir.dividirTerminal();
                                     break;
                                 }
 
-                                idades.set(indexEditada, idadeEditada);
+                                idades.set(indexEditada, editAge);
                                 System.out.println("Idade editada!");
                                 Dividir.dividirTerminal();
                             } else {
@@ -250,7 +250,7 @@ public class Main {
                                     break;
 
                                 case 5:
-                                    System.out.println("Não é possível a recuperação das idades após o confirmamento dessa ação.");
+                                    System.out.println("Todas as idades serão removidas após o confirmamento dessa ação.");
                                     System.out.print("Tem certeza dessa ação? [S/N]: ");
                                     String respCase5 = scan.next().toUpperCase();
                                     Dividir.dividirTerminal();
@@ -307,7 +307,8 @@ public class Main {
                     System.out.println("2. Ver a média e mediana das idades");
                     System.out.println("3. Ver idades pares e ímpares");
                     System.out.println("4. Ver quantidade de menores de idade/adultos/idosos");
-                    System.out.println("5. Ver alterações na lista");
+                    System.out.println("5. Restaurar idades removidas");
+                    System.out.println("6. Ver alterações na lista");
                     System.out.print("Resposta: ");
                     byte choiceCase4 = scan.nextByte();
                     Dividir.dividirTerminal();
@@ -448,16 +449,27 @@ public class Main {
                             idososIdade.clear();
                             break;
                         case 5:
+                            System.out.println("Todas as idades que você removeu voltarão após essa ação.");
+                            System.out.print("Tem certeza dessa ação? [S/N]: ");
+                            String respCase5 = scan.next().toUpperCase();
+                            Dividir.dividirTerminal();
+                            if (respCase5.equals("S")) {
+                                idades.addAll(idadesRemovidas);
+                                System.out.println("Todas as idades removidas foram restauradas!");
+                                Dividir.dividirTerminal();
+                            }
+                            break;
+                        case 6:
                             boolean isEnableToBeHere =
                                     idadesAdicionadas.isEmpty() &&
-                                    idadesForamEditadas.isEmpty() &&
+                                    idadesEditadas.isEmpty() &&
                                     idadesRemovidas.isEmpty();
 
                             if (!isEnableToBeHere) {
                                 System.out.println("Quantidades de idades adicionadas: " + idadesAdicionadas.size());
                                 System.out.println("Idades adicionadas: " + idadesAdicionadas);
-                                System.out.println("Quantidades de idades editadas: " + idadesForamEditadas.size());
-                                System.out.println("Idades editadas: " + idadesForamEditadas);
+                                System.out.println("Quantidades de idades editadas: " + idadesEditadas.size());
+                                System.out.println("Idades editadas: " + idadesEditadas);
                                 System.out.println("Quantidades de idades removidas: " + idadesRemovidas.size());
                                 System.out.println("Idades removidas: " + idadesRemovidas);
                                 Dividir.dividirTerminal();
