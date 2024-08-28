@@ -5,8 +5,8 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         boolean go = true;
-        //boolean isListOrganizedAscending = false;
-        //boolean isListOrganizedDescending = false;
+        boolean isListOrganizedAscending = false;
+        boolean isListOrganizedDescending = false;
         String msgInvalidOpt = "Selecione uma opção válida!";
         ArrayList<Short> ages = new ArrayList<>();
         ArrayList<Short> addedAges = new ArrayList<>();
@@ -27,6 +27,8 @@ public class Main {
             short randomNum = (short) (1 + (Math.random() * 110));
             ages.add(randomNum);
         }
+
+        ArrayList<Short> copyOfAges = new ArrayList<>(ages);
 
         do {
             System.out.println("Lista de idades: " + ages);
@@ -237,14 +239,35 @@ public class Main {
                                     do {
                                         System.out.print("Remover idade: ");
                                         short rmvAge = scan.nextShort();
-                                        boolean removedOpt4 = ages.remove(Short.valueOf(rmvAge));
-                                        if (removedOpt4) {
-                                            removedAges.add(rmvAge);
-                                            System.out.println("Idade removida!");
+                                        // Faz a busca binária se a lista está organizada de alguma forma
+                                        if (isListOrganizedAscending) {
+                                            int index = Search.bynarySearchAscending(ages, rmvAge);
+                                            if (index != -1) {
+                                                removedAges.add(rmvAge);
+                                                ages.remove(index);
+                                                System.out.println("Idade removida!");
+                                            } else {
+                                                System.out.println("Idade não encontrada!");
+                                            }
+                                        } else if (isListOrganizedDescending) {
+                                            int index = Search.bynarySearchDescending(ages, rmvAge);
+                                            if (index != -1) {
+                                                removedAges.add(rmvAge);
+                                                ages.remove(index);
+                                                System.out.println("Idade removida!");
+                                            } else {
+                                                System.out.println("Idade não encontrada!");
+                                            }
                                         } else {
-                                            System.out.println("Idade não encontrada!");
+                                            // Se não tiver organizada, faz a busca linear padrão
+                                            boolean removedOpt4 = ages.remove(Short.valueOf(rmvAge));
+                                            if (removedOpt4) {
+                                                removedAges.add(rmvAge);
+                                                System.out.println("Idade removida!");
+                                            } else {
+                                                System.out.println("Idade não encontrada!");
+                                            }
                                         }
-
                                         System.out.print("Continuar removendo? [S/N]: ");
                                         continueCase4 = scan.next().toUpperCase();
                                         Dividir.dividirTerminal();
@@ -277,11 +300,19 @@ public class Main {
                         break;
                     }
 
-
                     System.out.println("Ordenar em ordem: ");
                     System.out.println("0. Voltar");
-                    System.out.println("1. Crescente");
-                    System.out.println("2. Decrescente");
+                    if (isListOrganizedAscending) {
+                        System.out.println("1. Desfazer ordem crescente");
+                    } else {
+                        System.out.println("1. Crescente");
+                    }
+
+                    if (isListOrganizedDescending) {
+                        System.out.println("2. Desfazer ordem decrescente");
+                    } else {
+                        System.out.println("2. Decrescente");
+                    }
                     System.out.print("Resposta: ");
                     byte choiceCase5 = scan.nextByte();
                     Dividir.dividirTerminal();
@@ -289,13 +320,37 @@ public class Main {
                         case 0:
                             break;
                         case 1:
-                            Collections.sort(ages);
-                            System.out.println("Lista ordenada!");
+                            if (isListOrganizedDescending) {
+                                isListOrganizedDescending = false;
+                            }
+
+                            if (isListOrganizedAscending) {
+                                ages.clear();
+                                ages.addAll(copyOfAges);
+                                isListOrganizedAscending = false;
+                                System.out.println("Ordem desfeita!");
+                            } else {
+                                Collections.sort(ages);
+                                isListOrganizedAscending = true;
+                                System.out.println("Lista ordenada!");
+                            }
+
                             Dividir.dividirTerminal();
                             break;
                         case 2:
-                            ages.sort(Collections.reverseOrder());
-                            System.out.println("Lista ordenada!");
+                            if (isListOrganizedAscending) {
+                                isListOrganizedAscending = false;
+                            }
+                            if (isListOrganizedDescending) {
+                                ages.clear();
+                                ages.addAll(copyOfAges);
+                                isListOrganizedDescending = false;
+                                System.out.println("Ordem desfeita!");
+                            } else {
+                                ages.sort(Collections.reverseOrder());
+                                isListOrganizedDescending = true;
+                                System.out.println("Lista ordenada!");
+                            }
                             Dividir.dividirTerminal();
                             break;
                         default:
