@@ -39,4 +39,14 @@ public class Search {
         return -1;
     }
 
+    public static short frequencyAge(ArrayList<Short> list, short element) {
+        short cont = 0;
+        for (int i = 0; i < list.size() - 1; i++) {
+            if (list.get(i) == element) {
+                cont++;
+            }
+        }
+        return cont;
+    }
+
 }
