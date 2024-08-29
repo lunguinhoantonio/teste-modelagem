@@ -366,6 +366,7 @@ public class Main {
                     System.out.println("4. Ver quantidade de menores de idade/adultos/idosos");
                     System.out.println("5. Restaurar idades removidas");
                     System.out.println("6. Ver alterações na lista");
+                    System.out.println("7. Buscar idade na lista");
                     System.out.print("Resposta: ");
                     byte choiceCase4 = scan.nextByte();
                     Dividir.dividirTerminal();
@@ -534,6 +535,27 @@ public class Main {
                             }
 
                             System.out.println("Não houve alterações na lista!");
+                            Dividir.dividirTerminal();
+                            break;
+                        case 7:
+                            if (ages.isEmpty()) {
+                                System.out.println("Não é possível realizar essa ação se a lista está vazia!");
+                                Dividir.dividirTerminal();
+                                continue;
+                            }
+
+                            System.out.print("Idade buscada: ");
+                            short target = scan.nextShort();
+                            Dividir.dividirTerminal();
+                            short count = Search.frequencyAge(ages, target);
+
+                            if (count == 0) {
+                                System.out.println("Essa idade não existe!");
+                            } else if (count == 1) {
+                                System.out.println("A idade " + target + " aparece somente " + count + " vez!");
+                            } else {
+                                System.out.println("A idade " + target + " aparece " + count + " vezes!");
+                            }
                             Dividir.dividirTerminal();
                             break;
                         default:
