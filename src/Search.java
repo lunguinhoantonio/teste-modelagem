@@ -49,4 +49,14 @@ public class Search {
         return cont;
     }
 
+    public static short findIndex(ArrayList<Short> ages, short age, boolean isAscending, boolean isDescending) {
+        if (isAscending) {
+            return Search.bynarySearchAscending(ages, age);
+        } else if (isDescending) {
+            return Search.bynarySearchDescending(ages, age);
+        } else {
+            return (short) ages.indexOf(age);
+        }
+    }
+
 }
