@@ -15,7 +15,7 @@ public class Main {
 
         // Criando números aleatórios entre 1 e 80 até que o tamanho do array seja de 100
 
-        while (ages.size() < 100) {
+        while (ages.size() < 7) {
             short randomNum = (short) (1 + (Math.random() * 80));
             ages.add(randomNum);
         }
@@ -23,12 +23,13 @@ public class Main {
         /* Criando números aleatórios entre 1 e 110 até que o tamanho da array seja de 120. Fiz
         separado para que a probabilidade de uma idade ser maior que 80 seja menor */
 
-        while (ages.size() < 120) {
-            short randomNum = (short) (1 + (Math.random() * 110));
+        while (ages.size() < 10) {
+            short randomNum = (short) (1 + (Math.random() * 115));
             ages.add(randomNum);
         }
 
         ArrayList<Short> copyOfAges = new ArrayList<>(ages);
+        ArrayList<Short> firstOfAges = new ArrayList<>(ages);
 
         do {
             System.out.println("Lista de idades: " + ages);
@@ -50,7 +51,9 @@ public class Main {
                     go = false;
                     break;
                 case 1:
-                    System.out.println("Quantidade de idades na lista: " + ages.size());
+                    System.out.println(isListOrganizedAscending || isListOrganizedDescending ?
+                            "Quantidade de idades na lista: " + copyOfAges.size() :
+                            "Quantidade de idades na lista: " +  ages.size());
                     Dividir.dividirTerminal();
                     break;
                 case 2:
@@ -189,6 +192,7 @@ public class Main {
                                     boolean feedbackCase3Opt1 = ages.removeIf(num -> {
                                         if (num < 18) {
                                             removedAges.add(num);
+                                            copyOfAges.remove(num);
                                             return true;
                                         }
                                         return false;
@@ -202,6 +206,7 @@ public class Main {
                                     boolean feedbackCase3Opt2 = ages.removeIf(num -> {
                                         if (num >= 18 && num < 60) {
                                             removedAges.add(num);
+                                            copyOfAges.remove(num);
                                             return true;
                                         }
                                         return false;
@@ -215,6 +220,7 @@ public class Main {
                                     boolean feedbackCase3Opt3 = ages.removeIf(num -> {
                                         if (num >= 60) {
                                             removedAges.add(num);
+                                            copyOfAges.remove(num);
                                             return true;
                                         }
                                         return false;
@@ -233,8 +239,10 @@ public class Main {
                                         if (isListOrganizedAscending) {
                                             int index = Search.bynarySearchAscending(ages, rmvAge);
                                             if (index != -1) {
+                                                System.out.println(index);
                                                 removedAges.add(rmvAge);
-                                                ages.remove(index);
+                                                copyOfAges.remove(Short.valueOf(rmvAge));
+                                                ages.remove(Short.valueOf(rmvAge));
                                                 System.out.println("Idade removida!");
                                             } else {
                                                 System.out.println("Idade não encontrada!");
@@ -243,7 +251,8 @@ public class Main {
                                             int index = Search.bynarySearchDescending(ages, rmvAge);
                                             if (index != -1) {
                                                 removedAges.add(rmvAge);
-                                                ages.remove(index);
+                                                copyOfAges.remove(Short.valueOf(rmvAge));
+                                                ages.remove(Short.valueOf(rmvAge));
                                                 System.out.println("Idade removida!");
                                             } else {
                                                 System.out.println("Idade não encontrada!");
@@ -253,6 +262,7 @@ public class Main {
                                             boolean removedOpt4 = ages.remove(Short.valueOf(rmvAge));
                                             if (removedOpt4) {
                                                 removedAges.add(rmvAge);
+                                                copyOfAges.remove(Short.valueOf(rmvAge));
                                                 System.out.println("Idade removida!");
                                             } else {
                                                 System.out.println("Idade não encontrada!");
@@ -292,17 +302,8 @@ public class Main {
 
                     System.out.println("Ordenar em ordem: ");
                     System.out.println("0. Voltar");
-                    if (isListOrganizedAscending) {
-                        System.out.println("1. Desfazer ordem crescente");
-                    } else {
-                        System.out.println("1. Crescente");
-                    }
-
-                    if (isListOrganizedDescending) {
-                        System.out.println("2. Desfazer ordem decrescente");
-                    } else {
-                        System.out.println("2. Decrescente");
-                    }
+                    System.out.println("1. " + (isListOrganizedAscending ? "Desfazer ordem crescente" : "Crescente"));
+                    System.out.println("2. " + (isListOrganizedDescending ? "Desfazer ordem decrescente" : "Decrescente"));
                     System.out.print("Resposta: ");
                     byte choiceCase5 = scan.nextByte();
                     Dividir.dividirTerminal();
