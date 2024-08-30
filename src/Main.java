@@ -11,7 +11,7 @@ public class Main {
         ArrayList<Short> ages = new ArrayList<>();
         ArrayList<Short> addedAges = new ArrayList<>();
         ArrayList<Short> removedAges = new ArrayList<>();
-        ArrayList<Short> EditAges = new ArrayList<>();
+        ArrayList<Short> editAges = new ArrayList<>();
 
         // Criando números aleatórios entre 1 e 80 até que o tamanho do array seja de 100
 
@@ -138,36 +138,26 @@ public class Main {
                             if (editAge == 0) {
                                 break;
                             }
-
-                            boolean ageFound = ages.contains(editAge);
-
-                            if (ageFound) {
-                                int editedIndex = ages.indexOf(editAge);
-                                EditAges.add(editAge);
-                                System.out.println("Idade selecionada: [" + editAge + "]");
-                                System.out.println("Índice: [" + editedIndex + "]");
+                            int editedIndex = Search.findIndex(ages, editAge, isListOrganizedAscending, isListOrganizedDescending);
+                            if (editedIndex != -1) {
+                                editAges.add(editAge);
                                 System.out.print("Nova idade: ");
                                 editAge = scan.nextShort();
                                 Dividir.dividirTerminal();
 
-                                if (editAge < 0) {
-                                    System.out.println("A idade não pode ser negativa!");
-                                    Dividir.dividirTerminal();
-                                    break;
-                                } else if (editAge > 120) {
-                                    System.out.println("É pouco provável que exista alguém com essa idade!");
+                                if (editAge < 0 || editAge > 115) {
+                                    System.out.println(editAge < 0 ?
+                                            "A idade não pode ser negativa!" :
+                                            "É pouco provável que exista alguém com essa idade!");
                                     Dividir.dividirTerminal();
                                     break;
                                 }
-
                                 ages.set(editedIndex, editAge);
                                 System.out.println("Idade editada!");
-                                Dividir.dividirTerminal();
                             } else {
                                 System.out.println("Idade não encontrada!");
-                                Dividir.dividirTerminal();
-                                break;
                             }
+                            Dividir.dividirTerminal();
                             break;
                         case 3:
                             if (ages.isEmpty()) {
@@ -520,14 +510,14 @@ public class Main {
                         case 6:
                             boolean isEnableToBeHere =
                                     addedAges.isEmpty() &&
-                                    EditAges.isEmpty() &&
+                                    editAges.isEmpty() &&
                                     removedAges.isEmpty();
 
                             if (!isEnableToBeHere) {
                                 System.out.println("Quantidades de idades adicionadas: " + addedAges.size());
                                 System.out.println("Idades adicionadas: " + addedAges);
-                                System.out.println("Quantidades de idades editadas: " + EditAges.size());
-                                System.out.println("Idades editadas: " + EditAges);
+                                System.out.println("Quantidades de idades editadas: " + editAges.size());
+                                System.out.println("Idades editadas: " + editAges);
                                 System.out.println("Quantidades de idades removidas: " + removedAges.size());
                                 System.out.println("Idades removidas: " + removedAges);
                                 Dividir.dividirTerminal();
