@@ -17,16 +17,16 @@ public class Main {
         // Criando idades até que o tamanho do Array seja de 120
         while (ages.size() < 120) {
             short randomNum;
-            // Se o tamanho do Array for menor que 115, sorteia uma idade entre 1 e 80 e depois adiciona
+            // Se o tamanho do Array for menor que 115, sorteia uma idade entre 0 e 81 e depois adiciona
             // Aqui vai adicionar 115 idades
             if (ages.size() < 115) {
                 randomNum = (short) (1 + (Math.random() * 80));
             } else if (ages.size() < 118){
-                // Senão, se o tamanho do Array for menor que 118, sorteia uma idade entre 81 e 110 e depois adiciona
+                // Senão, se o tamanho do Array for menor que 118, sorteia uma idade entre 80 e 111 e depois adiciona
                 // Aqui vai adicionar 3 idades
                 randomNum = (short) (81 + (short) (Math.random() * (110 - 81 + 1)));
             } else {
-                // Senão, sorteia uma idade entre 111 e 115
+                // Senão, sorteia uma idade entre 110 e 116
                 // Aqui vai adicionar 2 idades
                 randomNum = (short) (81 + (short) (Math.random() * (115 - 111 + 1)));
             }
