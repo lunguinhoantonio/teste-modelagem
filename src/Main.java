@@ -14,18 +14,22 @@ public class Main {
         ArrayList<Short> removedAges = new ArrayList<>();
         ArrayList<Short> editAges = new ArrayList<>();
 
-        // Criando números aleatórios entre 1 e 80 até que o tamanho do array seja de 100
-
-        while (ages.size() < 7) {
-            short randomNum = (short) (1 + (Math.random() * 80));
-            ages.add(randomNum);
-        }
-
-        /* Criando números aleatórios entre 1 e 110 até que o tamanho da array seja de 120. Fiz
-        separado para que a probabilidade de uma idade ser maior que 80 seja menor */
-
-        while (ages.size() < 10) {
-            short randomNum = (short) (1 + (Math.random() * 115));
+        // Criando idades até que o tamanho do Array seja de 120
+        while (ages.size() < 120) {
+            short randomNum;
+            // Se o tamanho do Array for menor que 115, sorteia uma idade entre 1 e 80 e depois adiciona
+            // Aqui vai adicionar 115 idades
+            if (ages.size() < 115) {
+                randomNum = (short) (1 + (Math.random() * 80));
+            } else if (ages.size() < 118){
+                // Senão, se o tamanho do Array for menor que 118, sorteia uma idade entre 81 e 110 e depois adiciona
+                // Aqui vai adicionar 3 idades
+                randomNum = (short) (81 + (short) (Math.random() * (110 - 81 + 1)));
+            } else {
+                // Senão, sorteia uma idade entre 111 e 115
+                // Aqui vai adicionar 2 idades
+                randomNum = (short) (81 + (short) (Math.random() * (115 - 111 + 1)));
+            }
             ages.add(randomNum);
         }
 
