@@ -59,4 +59,13 @@ public class Search {
         }
     }
 
+    public static void processAgeList(String action, ArrayList<Short> manipulatedAges) {
+        if (manipulatedAges.isEmpty()) {
+            System.out.println("Nenhuma idade foi " + action + "!");
+        } else {
+            System.out.println("Quantidades de idades " + action + "s: " + manipulatedAges.size());
+            System.out.println("Idades " + action + "s: " + manipulatedAges);
+        }
+    }
+
 }
