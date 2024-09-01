@@ -9,6 +9,7 @@ public class Main {
         boolean isListOrganizedDescending = false;
         String msgInvalidOpt = "Selecione uma opção válida!";
         ArrayList<Short> ages = new ArrayList<>();
+        short listOrganized = 0;
         ArrayList<Short> addedAges = new ArrayList<>();
         ArrayList<Short> removedAges = new ArrayList<>();
         ArrayList<Short> editAges = new ArrayList<>();
@@ -323,6 +324,7 @@ public class Main {
                             } else {
                                 Collections.sort(ages);
                                 isListOrganizedAscending = true;
+                                listOrganized++;
                                 System.out.println("Lista ordenada!");
                             }
 
@@ -340,6 +342,7 @@ public class Main {
                             } else {
                                 ages.sort(Collections.reverseOrder());
                                 isListOrganizedDescending = true;
+                                listOrganized++;
                                 System.out.println("Lista ordenada!");
                             }
                             Dividir.dividirTerminal();
@@ -350,14 +353,21 @@ public class Main {
                         }
                     break;
                 case 4:
+                    boolean isEnableToBeHere =
+                            addedAges.isEmpty() &&
+                            editAges.isEmpty() &&
+                            removedAges.isEmpty() &&
+                            listOrganized == 0;
+
                     System.out.println("0. Voltar");
                     System.out.println("1. Ver a soma de todas as idades");
                     System.out.println("2. Ver a média e mediana das idades");
                     System.out.println("3. Ver idades pares e ímpares");
                     System.out.println("4. Ver quantidade de menores de idade/adultos/idosos");
                     System.out.println("5. Restaurar idades removidas");
-                    System.out.println("6. Ver alterações na lista");
-                    System.out.println("7. Buscar idade na lista");
+                    System.out.println("6. Ver alterações da lista");
+                    System.out.println("7. Buscar idade");
+                    System.out.println("8. Restaurar todas as alterações");
                     System.out.print("Resposta: ");
                     byte choiceCase4 = scan.nextByte();
                     Dividir.dividirTerminal();
@@ -509,18 +519,11 @@ public class Main {
                             }
                             break;
                         case 6:
-                            boolean isEnableToBeHere =
-                                    addedAges.isEmpty() &&
-                                    editAges.isEmpty() &&
-                                    removedAges.isEmpty();
-
                             if (!isEnableToBeHere) {
-                                System.out.println("Quantidades de idades adicionadas: " + addedAges.size());
-                                System.out.println("Idades adicionadas: " + addedAges);
-                                System.out.println("Quantidades de idades editadas: " + editAges.size());
-                                System.out.println("Idades editadas: " + editAges);
-                                System.out.println("Quantidades de idades removidas: " + removedAges.size());
-                                System.out.println("Idades removidas: " + removedAges);
+                                Search.processAgeList("adicionada", addedAges);
+                                Search.processAgeList("editada", editAges);
+                                Search.processAgeList("removida", removedAges);
+                                System.out.println("Quantidade de vezes que a lista foi ordenada " + listOrganized);
                                 Dividir.dividirTerminal();
                                 break;
                             }
@@ -547,6 +550,26 @@ public class Main {
                             } else {
                                 System.out.println("A idade " + target + " aparece " + count + " vezes!");
                             }
+                            Dividir.dividirTerminal();
+                            break;
+                        case 8:
+                            if (!isEnableToBeHere) {
+                                System.out.println("Com o confirmamento dessa ação, " +
+                                        "todas as alterações que você fez serão desfeitas, " +
+                                        "\na lista vai voltar como era desde o início do programa!");
+                                System.out.print("Tem certeza dessa ação? [S/N]: ");
+                                String respCase4Opt8 = scan.next().toUpperCase();
+                                Dividir.dividirTerminal();
+                                if (respCase4Opt8.equals("S")) {
+                                    removedAges.clear();
+                                    addedAges.clear();
+                                    editAges.clear();
+                                    ages.clear();
+                                    ages.addAll(firstOfAges);
+                                }
+                            }
+
+                            System.out.println("Não houve alterações na lista!");
                             Dividir.dividirTerminal();
                             break;
                         default:
