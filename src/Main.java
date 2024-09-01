@@ -523,7 +523,7 @@ public class Main {
                                 Search.processAgeList("adicionada", addedAges);
                                 Search.processAgeList("editada", editAges);
                                 Search.processAgeList("removida", removedAges);
-                                System.out.println("Quantidade de vezes que a lista foi ordenada " + listOrganized);
+                                System.out.println("Quantidade de vezes que a lista foi ordenada: " + listOrganized);
                                 Dividir.dividirTerminal();
                                 break;
                             }
@@ -564,6 +564,7 @@ public class Main {
                                     removedAges.clear();
                                     addedAges.clear();
                                     editAges.clear();
+                                    listOrganized = 0;
                                     ages.clear();
                                     ages.addAll(firstOfAges);
                                 }
