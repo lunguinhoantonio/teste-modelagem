@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Search {
     public static short bynarySearchAscending(ArrayList<Short> list, short target) {
@@ -65,6 +66,19 @@ public class Search {
         } else {
             System.out.println("Quantidades de idades " + action + "s: " + manipulatedAges.size());
             System.out.println("Idades " + action + "s: " + manipulatedAges);
+        }
+    }
+
+    public static void processListOrdered(String action, byte listOrderedOrNot) {
+        System.out.println("Quantidade de vezes que a lista foi " + action + ": " + listOrderedOrNot);
+    }
+
+    public static void printAgeGroup(ArrayList<Byte> ageGroup, String groupName) {
+        if (ageGroup.isEmpty()) {
+            System.out.println("Não tem " + groupName + "!");
+        } else {
+            Collections.sort(ageGroup);
+            System.out.println(groupName + ": " + ageGroup.size() + ", e são eles: " + ageGroup);
         }
     }
 
