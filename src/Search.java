@@ -95,4 +95,23 @@ public class Search {
         }
     }
 
+    public static boolean checkArrayListIsEmpty(ArrayList<Short> ages, String message) {
+        if (ages.isEmpty()) {
+            System.out.println(message);
+            Dividir.dividirTerminal();
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean checkArrayListHasAtLeast1Element(ArrayList<Short> ages) {
+        if (ages.size() <= 1) {
+            System.out.println("Não é possível ordenar a lista com 1 elemento ou menos!");
+            Dividir.dividirTerminal();
+            return true;
+        }
+        return false;
+    }
+
+
 }
