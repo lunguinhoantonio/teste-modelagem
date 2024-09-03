@@ -39,12 +39,7 @@ public class Main {
 
         do {
             System.out.println("Lista de idades: " + ages);
-            System.out.println("0. Fechar programa");
-            System.out.println("1. Consultar quantidade de idades");
-            System.out.println("2. Manipular dados");
-            System.out.println("3. Ordenar lista");
-            System.out.println("4. Mais opções da lista");
-            System.out.print("Resposta: ");
+            Options.mainOption();
             byte choice = scan.nextByte();
             Dividir.dividirTerminal();
 
@@ -63,11 +58,7 @@ public class Main {
                     Dividir.dividirTerminal();
                     break;
                 case 2:
-                    System.out.println("0. Voltar");
-                    System.out.println("1. Adicionar idade");
-                    System.out.println("2. Editar idade");
-                    System.out.println("3. Remover idade");
-                    System.out.print("Resposta: ");
+                    Options.case2();
                     byte choiceCase2 = scan.nextByte();
                     Dividir.dividirTerminal();
                     switch (choiceCase2) {
@@ -75,10 +66,7 @@ public class Main {
                             break;
                         case 1:
                             short addAge;
-                            System.out.println("0. Voltar");
-                            System.out.println("1. Adicionar quantidades predefinidas");
-                            System.out.println("2. Adicionar quantos quiser");
-                            System.out.print("Resposta: ");
+                            Options.case2Opt1();
                             byte subChoice1 = scan.nextByte();
                             Dividir.dividirTerminal();
                             switch (subChoice1) {
@@ -175,13 +163,7 @@ public class Main {
                                 break;
                             }
 
-                            System.out.println("0. Voltar");
-                            System.out.println("1. Remover todas abaixo de 18");
-                            System.out.println("2. Remover todas acima ou iguais a 18 e abaixo de 60");
-                            System.out.println("3. Remover todas acima ou iguais a 60");
-                            System.out.println("4. Personalizar remoções");
-                            System.out.println("5. Remover todas as idades");
-                            System.out.print("Resposta: ");
+                            Options.case2Opt3();
                             byte subChoice3 = scan.nextByte();
                             Dividir.dividirTerminal();
                             switch (subChoice3) {
@@ -367,16 +349,7 @@ public class Main {
                             listOrdered == 0 &&
                             listUnordered == 0;
 
-                    System.out.println("0. Voltar");
-                    System.out.println("1. Ver a soma de todas as idades");
-                    System.out.println("2. Ver a média e mediana das idades");
-                    System.out.println("3. Ver idades pares e ímpares");
-                    System.out.println("4. Ver quantidade de menores de idade/adultos/idosos");
-                    System.out.println("5. Restaurar idades removidas");
-                    System.out.println("6. Ver alterações da lista");
-                    System.out.println("7. Buscar idade");
-                    System.out.println("8. Restaurar todas as alterações");
-                    System.out.print("Resposta: ");
+                    Options.case4();
                     byte choiceCase4 = scan.nextByte();
                     Dividir.dividirTerminal();
                     switch (choiceCase4) {
@@ -482,32 +455,9 @@ public class Main {
                                 }
                             }
 
-                            if (minorsAge.isEmpty()) {
-                                System.out.println("Não tem menores de idade!");
-                            } else {
-                                Collections.sort(minorsAge);
-                                System.out.println("Menores de idade: " +
-                                        minorsAge.size() +
-                                        ", e são eles: " + minorsAge);
-                            }
-
-                            if (adultAge.isEmpty()) {
-                                System.out.println("Não tem adultos!");
-                            } else {
-                                Collections.sort(adultAge);
-                                System.out.println("Adultos: " +
-                                        adultAge.size() +
-                                        ", e são eles: " + adultAge);
-                            }
-
-                            if (elderlyAge.isEmpty()) {
-                                System.out.println("Não tem idosos!");
-                            } else {
-                                Collections.sort(elderlyAge);
-                                System.out.println("Idosos: " +
-                                        elderlyAge.size() +
-                                        ", e são eles: " + elderlyAge);
-                            }
+                            Search.printAgeGroup(minorsAge, "menores de idade");
+                            Search.printAgeGroup(adultAge, "adultos");
+                            Search.printAgeGroup(elderlyAge, "idosos");
 
                             Dividir.dividirTerminal();
 
@@ -516,8 +466,7 @@ public class Main {
                             elderlyAge.clear();
                             break;
                         case 5:
-                            System.out.println("Todas as idades que você removeu voltarão após essa ação.");
-                            System.out.print("Tem certeza dessa ação? [S/N]: ");
+                            Options.confirmCase4Opt5();
                             String respCase4Opt5 = scan.next().toUpperCase();
                             Dividir.dividirTerminal();
                             if (respCase4Opt5.equals("S")) {
@@ -531,8 +480,9 @@ public class Main {
                                 Search.processAgeList("adicionada", addedAges);
                                 Search.processAgeList("editada", editAges);
                                 Search.processAgeList("removida", removedAges);
-                                System.out.println("Quantidade de vezes que a lista foi ordenada: " + listOrdered);
-                                System.out.println("Quantidade de vezes que a lista foi desordenada: " + listUnordered);
+
+                                Search.processListOrdered("ordenada", listOrdered);
+                                Search.processListOrdered("desordenada", listUnordered);
                                 Dividir.dividirTerminal();
                                 break;
                             }
@@ -563,10 +513,7 @@ public class Main {
                             break;
                         case 8:
                             if (!isEnableToBeHere) {
-                                System.out.println("Com o confirmamento dessa ação, " +
-                                        "todas as alterações que você fez serão desfeitas, " +
-                                        "\na lista vai voltar como era desde o início do programa!");
-                                System.out.print("Tem certeza dessa ação? [S/N]: ");
+                                Options.confirmCase4Opt8();
                                 String respCase4Opt8 = scan.next().toUpperCase();
                                 Dividir.dividirTerminal();
                                 if (respCase4Opt8.equals("S")) {
