@@ -122,9 +122,8 @@ public class Main {
                             }
                             break;
                         case 2:
-                            if (ages.isEmpty()) {
-                                System.out.println("Não é possível editar a lista porque ela está vazia!");
-                                Dividir.dividirTerminal();
+                            if (Search.checkArrayListIsEmpty
+                               (ages, "Não é possível editar a lista porque ela está vazia!")) {
                                 break;
                             }
 
@@ -135,7 +134,11 @@ public class Main {
                             if (editAge == 0) {
                                 break;
                             }
-                            int editedIndex = Search.findIndex(ages, editAge, isListOrganizedAscending, isListOrganizedDescending);
+                            int editedIndex = Search.findIndex(
+                                    ages,
+                                    editAge,
+                                    isListOrganizedAscending,
+                                    isListOrganizedDescending);
                             if (editedIndex != -1) {
                                 editAges.add(editAge);
                                 System.out.print("Nova idade: ");
@@ -157,9 +160,7 @@ public class Main {
                             Dividir.dividirTerminal();
                             break;
                         case 3:
-                            if (ages.isEmpty()) {
-                                System.out.println("A lista já está vazia!");
-                                Dividir.dividirTerminal();
+                            if (Search.checkArrayListIsEmpty(ages, "A lista já está vazia!")) {
                                 break;
                             }
 
@@ -282,9 +283,7 @@ public class Main {
                     }
                     break;
                 case 3:
-                    if (ages.size() <= 1) {
-                        System.out.println("Não é possível ordenar a lista com 1 elemento ou menos!");
-                        Dividir.dividirTerminal();
+                    if (Search.checkArrayListHasAtLeast1Element(ages)) {
                         break;
                     }
 
@@ -356,10 +355,7 @@ public class Main {
                         case 0:
                             break;
                         case 1:
-                            if (ages.size() <= 1) {
-                                System.out.println("Não é possível realizar essa ação " +
-                                        "com a lista tendo 1 elemento ou menos!");
-                                Dividir.dividirTerminal();
+                            if (Search.checkArrayListHasAtLeast1Element(ages)) {
                                 continue;
                             }
                             short sumCase4Opt1 = 0;
@@ -371,10 +367,7 @@ public class Main {
                             Dividir.dividirTerminal();
                             break;
                         case 2:
-                            if (ages.size() <= 1) {
-                                System.out.println("Não é possível realizar essa ação " +
-                                        "com a lista tendo 1 elemento ou menos!");
-                                Dividir.dividirTerminal();
+                            if (Search.checkArrayListHasAtLeast1Element(ages)) {
                                 continue;
                             }
                             short sumCase4Opt2 = 0;
@@ -402,9 +395,8 @@ public class Main {
                             toCalcMedian.clear();
                             break;
                         case 3:
-                            if (ages.isEmpty()) {
-                                System.out.println("Não é possível realizar essa ação se a lista está vazia!");
-                                Dividir.dividirTerminal();
+                            if (Search.checkArrayListIsEmpty
+                               (ages, "Não é possível realizar essa ação se a lista está vazia!")) {
                                 continue;
                             }
                             ArrayList<Byte> even = new ArrayList<>();
@@ -426,9 +418,8 @@ public class Main {
                             odd.clear();
                             break;
                         case 4:
-                            if (ages.isEmpty()) {
-                                System.out.println("Não é possível realizar essa ação se a lista está vazia!");
-                                Dividir.dividirTerminal();
+                            if (Search.checkArrayListIsEmpty
+                               (ages, "Não é possível realizar essa ação se a lista está vazia!")) {
                                 continue;
                             }
                             ArrayList<Byte> minorsAge = new ArrayList<>();
@@ -484,9 +475,8 @@ public class Main {
                             Dividir.dividirTerminal();
                             break;
                         case 7:
-                            if (ages.isEmpty()) {
-                                System.out.println("Não é possível realizar essa ação se a lista está vazia!");
-                                Dividir.dividirTerminal();
+                            if (Search.checkArrayListIsEmpty
+                               (ages, "Não é possível realizar essa ação se a lista está vazia!")) {
                                 continue;
                             }
 
