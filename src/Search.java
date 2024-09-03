@@ -69,6 +69,17 @@ public class Search {
         }
     }
 
+    public static void printNumbers(ArrayList<Byte> numbers, String desc) {
+        if (numbers.isEmpty()) {
+            System.out.println("Não existem números " + desc + "!");
+        } else {
+            Collections.sort(numbers);
+            System.out.println(desc.substring(0, 1).toUpperCase() +
+                    desc.substring(1) + ": " + numbers.size() +
+                    ", e são eles: " + numbers);
+        }
+    }
+
     public static void processListOrdered(String action, byte listOrderedOrNot) {
         System.out.println("Quantidade de vezes que a lista foi " + action + ": " + listOrderedOrNot);
     }
@@ -78,7 +89,9 @@ public class Search {
             System.out.println("Não tem " + groupName + "!");
         } else {
             Collections.sort(ageGroup);
-            System.out.println(groupName + ": " + ageGroup.size() + ", e são eles: " + ageGroup);
+            System.out.println(groupName.substring(0, 1).toUpperCase() +
+                    groupName.substring(1) + ": " + ageGroup.size() +
+                    ", e são eles: " + ageGroup);
         }
     }
 
