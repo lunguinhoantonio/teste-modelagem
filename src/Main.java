@@ -9,7 +9,8 @@ public class Main {
         boolean isListOrganizedDescending = false;
         String msgInvalidOpt = "Selecione uma opção válida!";
         ArrayList<Short> ages = new ArrayList<>();
-        short listOrganized = 0;
+        byte listOrdered = 0;
+        byte listUnordered = 0;
         ArrayList<Short> addedAges = new ArrayList<>();
         ArrayList<Short> removedAges = new ArrayList<>();
         ArrayList<Short> editAges = new ArrayList<>();
@@ -324,11 +325,12 @@ public class Main {
                                 ages.clear();
                                 ages.addAll(copyOfAges);
                                 isListOrganizedAscending = false;
+                                listUnordered++;
                                 System.out.println("Ordem desfeita!");
                             } else {
                                 Collections.sort(ages);
                                 isListOrganizedAscending = true;
-                                listOrganized++;
+                                listOrdered++;
                                 System.out.println("Lista ordenada!");
                             }
 
@@ -342,11 +344,12 @@ public class Main {
                                 ages.clear();
                                 ages.addAll(copyOfAges);
                                 isListOrganizedDescending = false;
+                                listUnordered++;
                                 System.out.println("Ordem desfeita!");
                             } else {
                                 ages.sort(Collections.reverseOrder());
                                 isListOrganizedDescending = true;
-                                listOrganized++;
+                                listOrdered++;
                                 System.out.println("Lista ordenada!");
                             }
                             Dividir.dividirTerminal();
@@ -361,7 +364,8 @@ public class Main {
                             addedAges.isEmpty() &&
                             editAges.isEmpty() &&
                             removedAges.isEmpty() &&
-                            listOrganized == 0;
+                            listOrdered == 0 &&
+                            listUnordered == 0;
 
                     System.out.println("0. Voltar");
                     System.out.println("1. Ver a soma de todas as idades");
@@ -527,7 +531,8 @@ public class Main {
                                 Search.processAgeList("adicionada", addedAges);
                                 Search.processAgeList("editada", editAges);
                                 Search.processAgeList("removida", removedAges);
-                                System.out.println("Quantidade de vezes que a lista foi ordenada: " + listOrganized);
+                                System.out.println("Quantidade de vezes que a lista foi ordenada: " + listOrdered);
+                                System.out.println("Quantidade de vezes que a lista foi desordenada: " + listUnordered);
                                 Dividir.dividirTerminal();
                                 break;
                             }
@@ -568,7 +573,8 @@ public class Main {
                                     removedAges.clear();
                                     addedAges.clear();
                                     editAges.clear();
-                                    listOrganized = 0;
+                                    listOrdered = 0;
+                                    listUnordered = 0;
                                     ages.clear();
                                     ages.addAll(firstOfAges);
                                 }
