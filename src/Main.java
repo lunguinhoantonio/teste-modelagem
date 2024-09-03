@@ -417,19 +417,9 @@ public class Main {
                                     odd.add((byte) num);
                                 }
                             }
-                            if (even.isEmpty()) {
-                                System.out.println("Não existem números pares!");
-                            } else {
-                                Collections.sort(even);
-                                System.out.println("Pares: " + even.size() + ", e são eles: " + even);
-                            }
 
-                            if (odd.isEmpty()) {
-                                System.out.println("Não existem números ímpares!");
-                            } else {
-                                Collections.sort(odd);
-                                System.out.println("Ímpares: " + odd.size() + ", e são eles: " + odd);
-                            }
+                            Search.printNumbers(even, "pares");
+                            Search.printNumbers(odd, "ímpares");
 
                             Dividir.dividirTerminal();
                             even.clear();
@@ -454,7 +444,7 @@ public class Main {
                                     elderlyAge.add((byte) num);
                                 }
                             }
-
+                            // Mostra a quantidade das respectivas faixas de idade
                             Search.printAgeGroup(minorsAge, "menores de idade");
                             Search.printAgeGroup(adultAge, "adultos");
                             Search.printAgeGroup(elderlyAge, "idosos");
@@ -477,12 +467,15 @@ public class Main {
                             break;
                         case 6:
                             if (!isEnableToBeHere) {
+                                // Mostra a quantidade de suas respectivas alterações de suas respectivas ações
                                 Search.processAgeList("adicionada", addedAges);
                                 Search.processAgeList("editada", editAges);
                                 Search.processAgeList("removida", removedAges);
 
+                                // Mostra se a lista foi ordenada ou desordenada e quantas vezes
                                 Search.processListOrdered("ordenada", listOrdered);
                                 Search.processListOrdered("desordenada", listUnordered);
+
                                 Dividir.dividirTerminal();
                                 break;
                             }
