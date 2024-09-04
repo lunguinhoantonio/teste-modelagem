@@ -1,4 +1,5 @@
 public class Options {
+    // Exibe as opções principais do programa
     public static void mainOption() {
         System.out.println("0. Fechar programa");
         System.out.println("1. Consultar quantidade de idades");
@@ -7,7 +8,7 @@ public class Options {
         System.out.println("4. Mais opções da lista");
         System.out.print("Resposta: ");
     }
-
+    // Exibe as opções do case 2
     public static void case2() {
         System.out.println("0. Voltar");
         System.out.println("1. Adicionar idade");
@@ -16,6 +17,7 @@ public class Options {
         System.out.print("Resposta: ");
     }
 
+    // Exibe as opções na opção 1 do case 2
     public static void case2Opt1() {
         System.out.println("0. Voltar");
         System.out.println("1. Adicionar quantidades predefinidas");
@@ -23,6 +25,7 @@ public class Options {
         System.out.print("Resposta: ");
     }
 
+    // Exibe as opções na opção 3 do case 2
     public static void case2Opt3() {
         System.out.println("0. Voltar");
         System.out.println("1. Remover todas abaixo de 18");
@@ -33,6 +36,7 @@ public class Options {
         System.out.print("Resposta: ");
     }
 
+    // Exibe as opções do case 4
     public static void case4() {
         System.out.println("0. Voltar");
         System.out.println("1. Ver a soma de todas as idades");
@@ -46,11 +50,13 @@ public class Options {
         System.out.print("Resposta: ");
     }
 
+    // Exibe a mensagem pedindo confirmação na opção 5 do case 4
     public static void confirmCase4Opt5() {
         System.out.println("Todas as idades que você removeu voltarão após essa ação.");
         System.out.print("Tem certeza dessa ação? [S/N]: ");
     }
 
+    // Exibe a mensagem pedindo confirmação na opção 8 do case 4
     public static void confirmCase4Opt8() {
         System.out.println("Com o confirmamento dessa ação, " +
                 "todas as alterações que você fez serão desfeitas, " +
